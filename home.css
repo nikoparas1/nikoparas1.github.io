@@ -1,0 +1,118 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* 100% of the viewport height */
+  overflow: hidden; /* Prevent scrolling */
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+body {
+  border: 10px double dodgerblue;
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.image-container,
+.text-container,
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+  margin: 25px;
+}
+
+/* image section */
+.image-container {
+  /* background-color: red; */
+}
+
+.image-container img {
+  border-radius: 36px;
+  height: fit-content;
+}
+
+/* text section */
+.text-container {
+  /* background-color: blue; */
+}
+
+.title {
+  font-size: 36px;
+}
+
+.name {
+  color: dodgerblue;
+}
+
+.description {
+  font-size: 24px;
+}
+/* nav section */
+.nav-container {
+  width: 30%;
+  /* background-color: green; */
+  align-items: end;
+  justify-content: space-around;
+  position: relative;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50px;
+  background-color: #151b1f;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.button:hover {
+  background-color: dodgerblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 150px;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: 500;
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: visibility 0s, opacity 0.3s ease-out, width 0.3s ease-out;
+}
+
+.button:hover .label {
+  visibility: visible;
+  opacity: 1;
+  width: auto;
+}
+
+.active {
+  background-color: dodgerblue;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="home.css" />
+    <script
+      src="https://kit.fontawesome.com/849fbf2e75.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Nickolas's Portfolio</title>
+  </head>
+  <body>
+    <div class="flex-container">
+      <!--Image Section-->
+      <div class="image-container">
+        <img src="assets/portfoliopfp.jpeg" alt="" width="500" height="700" />
+      </div>
+      <!--Text Section-->
+      <div class="text-container">
+        <div class="title">
+          <p>
+            <b class="name">- NICKOLAS PARASKEVOPOULOS.</b>
+            <br />
+            <b class="role">STUDENT/SOFTWARE DEVELOPER</b>
+          </p>
+        </div>
+        <div class="description">
+          <p>
+            I'm a third-year student at Virginia Tech studying CS, focused on
+            improving my skillset as a software developer. I am passionate about
+            designing and developing efficient software that benefits those
+            around me.
+          </p>
+        </div>
+      </div>
+      <!--Nav Section-->
+      <div class="nav-container" id="nav-container">
+        <div class="button active">
+          <div class="icon">
+            <i class="fa-solid fa-house"></i>
+          </div>
+          <div class="label">
+            <span class="home-button-label">Home</span>
+          </div>
+        </div>
+        <div class="button" onclick="location.href='about.html'">
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="label">
+            <span class="about-button-label">About</span>
+          </div>
+        </div>
+        <div class="button" onclick="location.href=''">
+          <div class="icon">
+            <i class="fa-solid fa-clipboard"></i>
+          </div>
+          <div class="label">
+            <span class="resume-button-label">Resume</span>
+          </div>
+        </div>
+        <div class="button" onclick="location.href=''">
+          <div class="icon">
+            <i class="fa-solid fa-folder-open"></i>
+          </div>
+          <div class="label">
+            <span class="projects-button-label">Projects</span>
+          </div>
+        </div>
+        <div class="button" onclick="location.href=''">
+          <div class="icon">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div class="label">
+            <span class="skills-button-label">Skills</span>
+          </div>
+        </div>
+        <div class="button" onclick="location.href=''">
+          <div class="icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div class="label">
+            <span class="contact-button-label">Contact</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var buttons = document.querySelectorAll(".nav-container .button");
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            buttons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+          });
+        });
+      });
+    </script> -->
+  </body>
+</html>
