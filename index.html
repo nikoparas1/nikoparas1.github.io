@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="index.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script
       src="https://kit.fontawesome.com/849fbf2e75.js"
       crossorigin="anonymous"
@@ -11,7 +12,14 @@
     <title>Nickolas's Portfolio</title>
   </head>
   <body>
-    <div class="flex-container">
+    <script>
+      window.onload = function () {
+        setInitialTabAlignment();
+      };
+    </script>
+
+    <!-- Home Page -->
+    <div class="home">
       <!--Image Section-->
       <div class="image-container">
         <img src="assets/portfoliopfp.jpeg" alt="" width="500" height="700" />
@@ -36,55 +44,64 @@
       </div>
       <!--Nav Section-->
       <div class="nav-container" id="nav-container">
-        <div class="button active">
-          <div class="icon">
-            <i class="fa-solid fa-house"></i>
-          </div>
-          <div class="label">
-            <span class="home-button-label">Home</span>
-          </div>
-        </div>
-        <div class="button" onclick="location.href=''">
-          <div class="icon">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <div class="label">
-            <span class="about-button-label">About</span>
-          </div>
-        </div>
-        <div class="button" onclick="location.href=''">
-          <div class="icon">
-            <i class="fa-solid fa-clipboard"></i>
-          </div>
-          <div class="label">
-            <span class="resume-button-label">Resume</span>
-          </div>
-        </div>
-        <div class="button" onclick="location.href=''">
-          <div class="icon">
-            <i class="fa-solid fa-folder-open"></i>
-          </div>
-          <div class="label">
-            <span class="projects-button-label">Projects</span>
-          </div>
-        </div>
-        <div class="button" onclick="location.href=''">
-          <div class="icon">
-            <i class="fa-solid fa-code"></i>
-          </div>
-          <div class="label">
-            <span class="skills-button-label">Skills</span>
-          </div>
-        </div>
-        <div class="button" onclick="location.href=''">
-          <div class="icon">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-          <div class="label">
-            <span class="contact-button-label">Contact</span>
+        <div class="nav-wrapper">
+          <div class="navbar">
+            <div class="button active-button">
+              <div class="icon">
+                <i class="fa-solid fa-house"></i>
+              </div>
+              <div class="label">
+                <span class="home-button-label">Home</span>
+              </div>
+            </div>
+            <div class="button" onclick="location.href='about.html'">
+              <div class="icon">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="label">
+                <span class="about-button-label">About</span>
+              </div>
+            </div>
+            <div class="button" onclick="location.href=''">
+              <div class="icon">
+                <i class="fa-solid fa-clipboard"></i>
+              </div>
+              <div class="label">
+                <span class="resume-button-label">Resume</span>
+              </div>
+            </div>
+            <div class="button" onclick="location.href=''">
+              <div class="icon">
+                <i class="fa-solid fa-folder-open"></i>
+              </div>
+              <div class="label">
+                <span class="projects-button-label">Projects</span>
+              </div>
+            </div>
+            <div class="button" onclick="location.href='services.html'">
+              <div class="icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div class="label">
+                <span class="skills-button-label">Services</span>
+              </div>
+            </div>
+            <div class="button" onclick="location.href=''">
+              <div class="icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="label">
+                <span class="contact-button-label">Contact</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
+
+    <!-- Javascript -->
+    
   </body>
 </html>
