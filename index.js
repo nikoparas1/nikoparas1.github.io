@@ -1,3 +1,11 @@
+// TOP NAV
+const refreshLink = document.getElementById("refreshLink");
+refreshLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    location.reload();
+  }
+)
+
 // FLOATING NAV
 const sections = document.querySelectorAll('header, section');
 const navLinks = document.querySelectorAll('.floating-nav a');

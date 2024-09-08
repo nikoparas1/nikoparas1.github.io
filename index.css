@@ -48,6 +48,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
   background: rgb(0, 0, 0, 0.1);
   width: 10px;
