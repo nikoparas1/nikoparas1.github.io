@@ -1,14 +1,46 @@
 // FLOATING NAV
-const floatingNavs = document.querySelectorAll(".floating-nav a");
+const sections = document.querySelectorAll('header, section');
+const navLinks = document.querySelectorAll('.floating-nav a');
 
 const removeActiveClass = () => {
-  floatingNavs.forEach((nav) => {
+  navLinks.forEach((nav) => {
     nav.classList.remove("active");
   });
 };
 
-floatingNavs.forEach((nav) => {
-  nav.addEventListener("click", () => {
+const addActiveClass = (id) => {
+  removeActiveClass();
+  const activeLink = document.querySelector(`.floating-nav a[href="#${id}"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
+}
+
+const observerCallback = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      addActiveClass(entry.target.id);
+    }
+  });
+};
+
+const observerOptions = {
+  threshold: 0.5,
+};
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+sections.forEach((section) => {
+  observer.observe(section);
+});
+
+navLinks.forEach((nav) => {
+  nav.addEventListener("click", (event) => {
+    event.preventDefault();
+    const targetID = nav.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetID);
+
+    targetSection.scrollIntoView({behavior: 'smooth'});
+
     removeActiveClass();
     nav.classList.add("active");
   });
@@ -51,7 +83,7 @@ experienceBtn.addEventListener("click", () => {
   resumeRight.className = "resume-right experience";
   experienceBtn.classList.add("primary");
   // remove classes from other buttons
-  aboutBtn.classList.remove("primary");
+  infoBtn.classList.remove("primary");
   skillsBtn.classList.remove("primary");
   educationBtn.classList.remove("primary");
 });
@@ -94,7 +126,7 @@ educationBtn.addEventListener("click", () => {
   resumeRight.className = "resume-right education";
   educationBtn.classList.add("primary");
   // remove classes from other buttons
-  aboutBtn.classList.remove("primary");
+  infoBtn.classList.remove("primary");
   skillsBtn.classList.remove("primary");
   experienceBtn.classList.remove("primary");
 });
@@ -103,13 +135,14 @@ const skillsContent = `
           <h4>Skills</h4>
           <p>Lorem ipsum dolor sit amet consectetur.</p>
           <ul>
-            <li><img src="./assets/react.webp" alt="ReactJS logo" /></li>
-            <li><img src="./assets/next.png" alt="NextJS logo" /></li>
-            <li><img src="./assets/tailwind.png" alt="Tailwind logo" /></li>
-            <li><img src="./assets/prisma.png" alt="Prisma logo" /></li>
-            <li><img src="./assets/mongo.jpg" alt="MongoDB logo" /></li>
-            <li><img src="./assets/jwt.png" alt="JWT logo" /></li>
-            <li><img src="./assets/node.png" alt="NodeJS logo" /></li>
+            <li><img src="./assets/logos/c_logo.svg" alt="C logo" /></li>
+            <li><img src="./assets/logos/python_logo.svg" alt="Python logo" /></li>
+            <li><img src="./assets/logos/java_logo.svg" alt="Java logo" /></li>
+            <li><img src="./assets/logos/js_logo.svg" alt="Javascript logo" /></li>
+            <li><img src="./assets/logos/ts_logo.svg" alt="Typescript logo" /></li>
+            <li><img src="./assets/logos/html_logo.svg" alt="HTML logo" /></li>
+            <li><img src="./assets/logos/css_logo.svg" alt="CSS logo" /></li>
+            <li><img src="./assets/logos/kotlin_logo.svg" alt="Kotlin logo" /></li>
           </ul>
 `;
 const skillsBtn = document.querySelector(".skills-btn");
@@ -118,18 +151,13 @@ skillsBtn.addEventListener("click", () => {
   resumeRight.className = "resume-right skills";
   skillsBtn.classList.add("primary");
   // remove classes from other buttons
-  aboutBtn.classList.remove("primary");
+  infoBtn.classList.remove("primary");
   educationBtn.classList.remove("primary");
   experienceBtn.classList.remove("primary");
 });
 
 // about
-const aboutContent = `
-          <h4>About me</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-            debitis excepturi quibusdam.
-          </p>
+const infoContent = `
           <ul>
             <li>
               <h6>Name:</h6>
@@ -161,11 +189,11 @@ const aboutContent = `
             </li>
           </ul>
 `;
-const aboutBtn = document.querySelector(".about-btn");
-aboutBtn.addEventListener("click", () => {
-  resumeRight.innerHTML = aboutContent;
-  resumeRight.className = "resume-right about";
-  aboutBtn.classList.add("primary");
+const infoBtn = document.querySelector(".info-btn");
+infoBtn.addEventListener("click", () => {
+  resumeRight.innerHTML = infoContent;
+  resumeRight.className = "about-body ul";
+  infoBtn.classList.add("primary");
   // remove classes from other buttons
   skillsBtn.classList.remove("primary");
   educationBtn.classList.remove("primary");
@@ -198,6 +226,7 @@ projectCategories.forEach((category) => {
     category.classList.add("primary");
   });
 });
+
 
 // THEME
 const themeToggle = document.querySelector(".nav-btn");
