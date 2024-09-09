@@ -1,14 +1,13 @@
 // TOP NAV
 const refreshLink = document.getElementById("refreshLink");
-refreshLink.addEventListener("click", function(event) {
-    event.preventDefault();
-    location.reload();
-  }
-)
+refreshLink.addEventListener("click", function (event) {
+  event.preventDefault();
+  location.reload();
+});
 
 // FLOATING NAV
-const sections = document.querySelectorAll('header, section');
-const navLinks = document.querySelectorAll('.floating-nav a');
+const sections = document.querySelectorAll("header, section");
+const navLinks = document.querySelectorAll(".floating-nav a");
 
 const removeActiveClass = () => {
   navLinks.forEach((nav) => {
@@ -20,9 +19,9 @@ const addActiveClass = (id) => {
   removeActiveClass();
   const activeLink = document.querySelector(`.floating-nav a[href="#${id}"]`);
   if (activeLink) {
-    activeLink.classList.add('active');
+    activeLink.classList.add("active");
   }
-}
+};
 
 const observerCallback = (entries) => {
   entries.forEach((entry) => {
@@ -44,10 +43,10 @@ sections.forEach((section) => {
 navLinks.forEach((nav) => {
   nav.addEventListener("click", (event) => {
     event.preventDefault();
-    const targetID = nav.getAttribute('href').substring(1);
+    const targetID = nav.getAttribute("href").substring(1);
     const targetSection = document.getElementById(targetID);
 
-    targetSection.scrollIntoView({behavior: 'smooth'});
+    targetSection.scrollIntoView({ behavior: "smooth" });
 
     removeActiveClass();
     nav.classList.add("active");
@@ -55,75 +54,68 @@ navLinks.forEach((nav) => {
 });
 
 // RESUME
+const setResumeContent = (content, className) => {
+  resumeRight.innerHTML = content;
+  resumeRight.className = `resume-right ${className}`;
+};
+
 const resumeRight = document.querySelector(".resume-right");
 const experienceContent = `
           <h4>Experience</h4>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse error
-            perferendis voluptatibus et architecto cum.
+            Discover the impactful roles and projects where I've honed my technical skills and contributed to real-world solutions.
           </p>
           <ul>
             <li>
               <h6>June 2024 - Present</h6>
-              <h5>Mobile Application Developer</h5>
-              <p>SAIC</p>
+              <h5><span>SAIC |</span> Mobile Application Developer</h5>
+              <p></p>
             </li>
             <li>
               <h6>May 2023 - August 2023</h6>
-              <h5>Software Engineering Intern</h5>
-              <p>Pangiam Labs</p>
+              <h5><span>Pangiam Labs |</span> Software Engineering Intern</h5>
+              <p></p>
             </li>
             <li>
               <h6>June 2020 - August 2020</h6>
-              <h5>Software Engineering Intern</h5>
-              <p>Ascendra inc.</p>
-            </li>
-            <li>
-              <h6>January 2021 - Present</h6>
-              <h5>Server</h5>
-              <p>PJ Skidoos Restaurant</p>
+              <h5><span>Ascendra inc. |</span> Software Engineering Intern</h5>
+              <p></p>
             </li>
           </ul>
 `;
+
+setResumeContent(experienceContent, "experience");
+
 const experienceBtn = document.querySelector(".experience-btn");
 experienceBtn.addEventListener("click", () => {
-  resumeRight.innerHTML = experienceContent;
-  resumeRight.className = "resume-right experience";
+  // resumeRight.innerHTML = experienceContent;
+  // resumeRight.className = "resume-right experience";
+  setResumeContent(experienceContent, "experience");
   experienceBtn.classList.add("primary");
   // remove classes from other buttons
   infoBtn.classList.remove("primary");
   skillsBtn.classList.remove("primary");
   educationBtn.classList.remove("primary");
 });
-resumeRight.innerHTML = experienceContent; // set experience content as the default content for resume right when page initially loads
+// resumeRight.innerHTML = experienceContent; // set experience content as the default content for resume right when page initially loads
 
 // education
 const educationContent = `
             <h4>Education</h4>
             <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-            dolores suscipit harum, nam corrupti cumque?
+              Learn about my academic journey and the foundational knowledge I've gained in computer science and engineering.
             </p>
             <ul>
             <li>
-                <h5>Virginia Tech</h5>
+                <h5><span>Bachelor's of Science in Computer Science, College of Engineering</span> </h5>
                 <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum,
-                aut!
+                Virginia Tech | August 2021 - May 2025
                 </p>
             </li>
             <li>
-                <h5>Virginia Tech</h5>
+                <h5><span>Master's of Engineering in Computer Science, College of Engineering</span></h5>
                 <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum,
-                aut!
-                </p>
-            </li>
-            <li>
-                <h5>Virginia Tech</h5>
-                <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum,
-                aut!
+                Virginia Tech | August 2025 - May 2026
                 </p>
             </li>
             </ul>
@@ -138,30 +130,70 @@ educationBtn.addEventListener("click", () => {
   skillsBtn.classList.remove("primary");
   experienceBtn.classList.remove("primary");
 });
+
 // skills
 const skillsContent = `
-          <h4>Skills</h4>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
-          <ul>
-            <li><img src="./assets/logos/c_logo.svg" alt="C logo" /></li>
-            <li><img src="./assets/logos/python_logo.svg" alt="Python logo" /></li>
-            <li><img src="./assets/logos/java_logo.svg" alt="Java logo" /></li>
-            <li><img src="./assets/logos/js_logo.svg" alt="Javascript logo" /></li>
-            <li><img src="./assets/logos/ts_logo.svg" alt="Typescript logo" /></li>
-            <li><img src="./assets/logos/html_logo.svg" alt="HTML logo" /></li>
-            <li><img src="./assets/logos/css_logo.svg" alt="CSS logo" /></li>
-            <li><img src="./assets/logos/kotlin_logo.svg" alt="Kotlin logo" /></li>
-          </ul>
+            <h4>Skills</h4>
+            <p>Explore the diverse set of technical skills and tools I’ve mastered to tackle complex challenges with precision and creativity.</p>
+            <menu class="skill-categories">
+              <button class="btn active" data-filter="*">All</button>
+              <button class="btn" data-filter=".languages">Languages</button>
+              <button class="btn" data-filter=".frameworks">Frameworks</button>
+              <button class="btn" data-filter=".technologies">Technologies</button>
+            </menu>
+            <div class="container skills-container">
+              <ul class="skills-list">
+                <li class="languages"><img src="./assets/logos/c_logo.svg" alt="C logo" /></li>
+                <li class="languages"><img src="./assets/logos/python_logo.svg" alt="Python logo" /></li>
+                <li class="languages"><img src="./assets/logos/java_logo.svg" alt="Java logo" /></li>
+                <li class="frameworks"><img src="./assets/logos/react_logo.svg" alt="React logo" /></li>
+                <li class="languages"><img src="./assets/logos/kotlin_logo.svg" alt="Kotlin logo" /></li>
+                <li class="technologies"><img src="./assets/logos/docker_logo.svg" alt="Docker logo" /></li>
+                <li class="technologies"><img src="./assets/logos/gcloud_logo.svg" alt="Google Cloud logo" /></li>
+                <li class="languages"><img src="./assets/logos/html_logo.svg" alt="HTML logo" /></li>
+                <li class="languages"><img src="./assets/logos/css_logo.svg" alt="CSS logo" /></li>
+                <li class="languages"><img src="./assets/logos/js_logo.svg" alt="JS logo" /></li>
+                <li class="languages"><img src="./assets/logos/ts_logo.svg" alt="TS logo" /></li>
+              </ul>
+            </div>
 `;
+
 const skillsBtn = document.querySelector(".skills-btn");
 skillsBtn.addEventListener("click", () => {
-  resumeRight.innerHTML = skillsContent;
-  resumeRight.className = "resume-right skills";
+  setResumeContent(skillsContent, "skills");
   skillsBtn.classList.add("primary");
-  // remove classes from other buttons
   infoBtn.classList.remove("primary");
   educationBtn.classList.remove("primary");
   experienceBtn.classList.remove("primary");
+
+  // Skills category filtering logic
+  const skillCategories = document.querySelectorAll(".skill-categories button");
+  const skillsListItems = document.querySelectorAll(".skills-list li");
+
+  skillCategories.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filterValue = button.getAttribute("data-filter");
+
+      // Remove 'active' class from all buttons
+      skillCategories.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      // Show or hide skills based on the selected filter
+      skillsListItems.forEach((item) => {
+        if (
+          filterValue === "*" ||
+          item.classList.contains(filterValue.substring(1))
+        ) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // Show all skills by default
+  skillCategories[0].click();
 });
 
 // about
@@ -173,7 +205,7 @@ const infoContent = `
             </li>
             <li>
               <h6>Experience:</h6>
-              <h5>6+ years (2018-2024)</h5>
+              <h5>6+ years (2018-Present)</h5>
             </li>
             <li>
               <h6>Email:</h6>
@@ -199,8 +231,9 @@ const infoContent = `
 `;
 const infoBtn = document.querySelector(".info-btn");
 infoBtn.addEventListener("click", () => {
-  resumeRight.innerHTML = infoContent;
-  resumeRight.className = "about-body ul";
+  setResumeContent(infoContent, "info");
+  // resumeRight.innerHTML = infoContent;
+  // resumeRight.className = "about-body ul";
   infoBtn.classList.add("primary");
   // remove classes from other buttons
   skillsBtn.classList.remove("primary");
@@ -222,19 +255,18 @@ const projectCategories = document.querySelectorAll(
   ".project-categories button"
 );
 
-const removePrimaryClass = () => {
-  projectCategories.forEach((category) => {
+const removePrimaryClass = (categories) => {
+  categories.forEach((category) => {
     category.classList.remove("primary");
   });
 };
 
 projectCategories.forEach((category) => {
   category.addEventListener("click", () => {
-    removePrimaryClass();
+    removePrimaryClass(projectCategories);
     category.classList.add("primary");
   });
 });
-
 
 // THEME
 const themeToggle = document.querySelector(".nav-btn");
