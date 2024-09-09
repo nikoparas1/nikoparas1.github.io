@@ -48,7 +48,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -147,7 +148,8 @@ section {
   padding: 10rem 0;
 }
 
-section, header {
+section,
+header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -372,40 +374,6 @@ header {
   text-align: left;
   padding: 0 2rem;
   gap: 2rem;
-  /* background-color: red; */
-}
-
-.about-body {
-  display: flex;
-  flex-direction: row;
-  /* background-color: green; */
-  padding: 2rem;
-}
-
-.about-body li {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-}
-
-.about-body li h6 {
-  /* background-color: red; */
-  grid-column: 1;
-  text-align: left;
-  font-size: 1.2rem;
-  line-height: 1.2rem;
-  color: var(--color-gray-500);
-  margin-bottom: 1rem;
-}
-
-.about-body li h5 {
-  /* background-color: blue; */
-  grid-column: 2;
-  text-align: center;
-  font-size: 1.4rem;
-  line-height: 1.4rem;
-  color: var(--color-gray-900);
-  margin-bottom: 1rem;
 }
 
 /* RESUME */
@@ -437,6 +405,7 @@ header {
 }
 
 .resume-left menu button {
+  background-color: var(--color-gray-100);
   border-color: var(--color-gray-0);
   border-radius: var(--border-radius);
 }
@@ -478,10 +447,22 @@ header {
   margin: 0.8rem 0;
 }
 
+/* EXPERIENCE */
+.resume-right.experience ul {
+  grid-template-columns: 1fr;
+}
+
+.resume-right.experience li h5 span {
+  color: var(--color-gray-900);
+  font-weight: normal;
+}
+
+
 /* EDUCATION */
 .resume-right.education ul {
   grid-template-columns: 1fr;
 }
+
 
 .resume-right.education li h5 {
   margin-top: 0;
@@ -494,6 +475,41 @@ header {
 
 .resume-right.skills ul li {
   padding: 1rem;
+}
+
+/* SKILLS */
+.skill-categories {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.skill-categories .btn {
+  background-color: var(--color-gray-100);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  white-space: nowrap;
+}
+
+.skill-categories .btn.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.skills-container {
+  width: 100%;
+  max-width: 100%; /* Ensures container doesn't overflow */
+  padding: 0 1rem; /* Add padding for spacing on mobile */
+  box-sizing: border-box; /* Ensures padding doesn't affect the container width */
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }
 
 /* PROJECTS */
@@ -702,7 +718,6 @@ form button {
 
   /* Floating Nav Bar */
 
-
   /* ABOUT */
 
   .about-container {
@@ -772,9 +787,36 @@ form button {
     gap: 0.7rem;
   }
 
+  .skill-categories {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .skill-categories .btn {
+    background-color: var(--color-gray-100);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    white-space: nowrap;
+  }
+
   .resume-right.skills ul {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
+    gap: 2rem;
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .resume-right.info ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skills-list li {
+    padding: 0.5rem;
   }
 
   .project-categories {
