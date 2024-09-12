@@ -264,12 +264,12 @@ nav {
 /* Header */
 
 header {
-  margin-top: 3rem;
-  height: calc(100vh - 3rem);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  place-items: center;
-  position: relative;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  height: calc(100vh - 3rem);
 }
 
 /* make background a gradient on dark theme */
@@ -293,18 +293,16 @@ header {
 .header-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .header-content {
   grid-column: 2 / 3;
-  display: grid;
-  grid-template-rows: auto auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.header-text {
-  grid-row: 1 / 2;
+  gap: 1rem;
 }
 
 .header-text h1 {
@@ -316,7 +314,6 @@ header {
 }
 
 .header-cta {
-  grid-row: 2 / 3;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -326,15 +323,11 @@ header {
 .header-cta a {
   border-radius: var(--border-radius);
   font-size: 1.2rem;
-
 }
 
 .header-socials {
-  /* position: absolute; */
   grid-column: 3 / 4;
   justify-self: end;
-  /* top: 30%; */
-  /* right: 10%; */
   display: flex;
   flex-direction: column;
   gap: 2rem;
