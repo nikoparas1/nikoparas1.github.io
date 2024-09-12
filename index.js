@@ -1,298 +1,476 @@
-// TOP NAV
-const refreshLink = document.getElementById("refreshLink");
-refreshLink.addEventListener("click", function (event) {
-  event.preventDefault();
-  location.reload();
-});
+// Fetch data from config.json file
+fetch("./config.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const navData = data.nav;
+    const headerData = data.header;
+    const aboutData = data.about;
+    const resumeData = data.resume;
+    const projectsData = data.projects;
+    const contactData = data.contact;
 
-// FLOATING NAV
-const sections = document.querySelectorAll("header, section");
-const navLinks = document.querySelectorAll(".floating-nav a");
+    // ================== TOP NAV BAR ==================
+    const brandLink = document.getElementById("brandLink");
+    brandLink.href = navData.topNav.brandLink;
+    brandLink.textContent = navData.topNav.brandName;
 
-const removeActiveClass = () => {
-  navLinks.forEach((nav) => {
-    nav.classList.remove("active");
-  });
-};
+    const themeToggleButton = document.getElementById("themeToggleButton");
+    const themeIcon = document.getElementById("themeIcon");
 
-const addActiveClass = (id) => {
-  removeActiveClass();
-  const activeLink = document.querySelector(`.floating-nav a[href="#${id}"]`);
-  if (activeLink) {
-    activeLink.classList.add("active");
-  }
-};
+    // ================== THEME TOGGLER ==================
+    // Initialize theme based on local storage
+    const initializeTheme = () => {
+      const bodyClass = window.localStorage.getItem("portfolio-theme") || "";
+      const iconClass = window.localStorage.getItem("theme-icon") || "uil-moon";
+      document.body.className = bodyClass;
+      themeIcon.className = `uil ${iconClass}`;
+    };
 
-const observerCallback = (entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      addActiveClass(entry.target.id);
-    }
-  });
-};
+    const updateThemeIcon = () => {
+      if (document.body.className == "") {
+        themeIcon.className = "uil uil-moon";
+      } else {
+        themeIcon.className = "uil uil-sun";
+      }
+    };
 
-const observerOptions = {
-  threshold: 0.5,
-};
-const observer = new IntersectionObserver(observerCallback, observerOptions);
+    // Add click listener to theme toggle button
+    themeToggleButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme-variables");
 
-sections.forEach((section) => {
-  observer.observe(section);
-});
+      if (document.body.className == "") {
+        window.localStorage.setItem("portfolio-theme", "");
+        window.localStorage.setItem("theme-icon", "uil-moon");
+      } else {
+        window.localStorage.setItem("portfolio-theme", "dark-theme-variables");
+        window.localStorage.setItem("theme-icon", "uil-sun");
+      }
+      updateThemeIcon();
+    });
 
-navLinks.forEach((nav) => {
-  nav.addEventListener("click", (event) => {
-    event.preventDefault();
-    const targetID = nav.getAttribute("href").substring(1);
-    const targetSection = document.getElementById(targetID);
+    // Initialize theme on page load
+    initializeTheme();
 
-    targetSection.scrollIntoView({ behavior: "smooth" });
+    // ================== FLOATING NAV BAR ==================
+    const floatingNavContainer = document.getElementById(
+      "floatingNavContainer"
+    );
+    navData.floatingNav.forEach((item, index) => {
+      const anchor = document.createElement("a");
+      anchor.href = item.link;
+      anchor.innerHTML = `<i class="${item.icon}"></i>`;
+      if (index === 0) anchor.classList.add("active"); // Set the first nav item as active
+      floatingNavContainer.appendChild(anchor);
+    });
 
-    removeActiveClass();
-    nav.classList.add("active");
-  });
-});
+    // Add event listeners for the floating nav bar links
+    const navLinks = document.querySelectorAll(".floating-nav a");
+    navLinks.forEach((nav) => {
+      nav.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetID = nav.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetID);
 
-// RESUME
-const setResumeContent = (content, className) => {
-  resumeRight.innerHTML = content;
-  resumeRight.className = `resume-right ${className}`;
-};
+        targetSection.scrollIntoView({ behavior: "smooth" });
 
-const resumeRight = document.querySelector(".resume-right");
-const experienceContent = `
-          <h4>Experience</h4>
-          <p>
-            Discover the impactful roles and projects where I've honed my technical skills and contributed to real-world solutions.
-          </p>
-          <ul>
-            <li>
-              <h6>June 2024 - Present</h6>
-              <h5><span>SAIC |</span> Mobile Application Developer</h5>
-              <p></p>
-            </li>
-            <li>
-              <h6>May 2023 - August 2023</h6>
-              <h5><span>Pangiam Labs |</span> Software Engineering Intern</h5>
-              <p></p>
-            </li>
-            <li>
-              <h6>June 2020 - August 2020</h6>
-              <h5><span>Ascendra inc. |</span> Software Engineering Intern</h5>
-              <p></p>
-            </li>
-          </ul>
-`;
-
-setResumeContent(experienceContent, "experience");
-
-const experienceBtn = document.querySelector(".experience-btn");
-experienceBtn.addEventListener("click", () => {
-  // resumeRight.innerHTML = experienceContent;
-  // resumeRight.className = "resume-right experience";
-  setResumeContent(experienceContent, "experience");
-  experienceBtn.classList.add("primary");
-  // remove classes from other buttons
-  infoBtn.classList.remove("primary");
-  skillsBtn.classList.remove("primary");
-  educationBtn.classList.remove("primary");
-});
-// resumeRight.innerHTML = experienceContent; // set experience content as the default content for resume right when page initially loads
-
-// education
-const educationContent = `
-            <h4>Education</h4>
-            <p>
-              Learn about my academic journey and the foundational knowledge I've gained in computer science and engineering.
-            </p>
-            <ul>
-            <li>
-                <h5><span>Bachelor's of Science in Computer Science, College of Engineering</span> </h5>
-                <p>
-                Virginia Tech | August 2021 - May 2025
-                </p>
-            </li>
-            <li>
-                <h5><span>Master's of Engineering in Computer Science, College of Engineering</span></h5>
-                <p>
-                Virginia Tech | August 2025 - May 2026
-                </p>
-            </li>
-            </ul>
-`;
-const educationBtn = document.querySelector(".education-btn");
-educationBtn.addEventListener("click", () => {
-  resumeRight.innerHTML = educationContent;
-  resumeRight.className = "resume-right education";
-  educationBtn.classList.add("primary");
-  // remove classes from other buttons
-  infoBtn.classList.remove("primary");
-  skillsBtn.classList.remove("primary");
-  experienceBtn.classList.remove("primary");
-});
-
-// skills
-const skillsContent = `
-            <h4>Skills</h4>
-            <p>Explore the diverse set of technical skills and tools I’ve mastered to tackle complex challenges with precision and creativity.</p>
-            <menu class="skill-categories">
-              <button class="btn active" data-filter="*">All</button>
-              <button class="btn" data-filter=".languages">Languages</button>
-              <button class="btn" data-filter=".frameworks">Frameworks</button>
-              <button class="btn" data-filter=".technologies">Technologies</button>
-            </menu>
-            <div class="container skills-container">
-              <ul class="skills-list">
-                <li class="languages"><img src="./assets/logos/c_logo.svg" alt="C logo" /></li>
-                <li class="languages"><img src="./assets/logos/python_logo.svg" alt="Python logo" /></li>
-                <li class="languages"><img src="./assets/logos/java_logo.svg" alt="Java logo" /></li>
-                <li class="frameworks"><img src="./assets/logos/react_logo.svg" alt="React logo" /></li>
-                <li class="languages"><img src="./assets/logos/kotlin_logo.svg" alt="Kotlin logo" /></li>
-                <li class="technologies"><img src="./assets/logos/docker_logo.svg" alt="Docker logo" /></li>
-                <li class="technologies"><img src="./assets/logos/gcloud_logo.svg" alt="Google Cloud logo" /></li>
-                <li class="languages"><img src="./assets/logos/html_logo.svg" alt="HTML logo" /></li>
-                <li class="languages"><img src="./assets/logos/css_logo.svg" alt="CSS logo" /></li>
-                <li class="languages"><img src="./assets/logos/js_logo.svg" alt="JS logo" /></li>
-                <li class="languages"><img src="./assets/logos/ts_logo.svg" alt="TS logo" /></li>
-              </ul>
-            </div>
-`;
-
-const skillsBtn = document.querySelector(".skills-btn");
-skillsBtn.addEventListener("click", () => {
-  setResumeContent(skillsContent, "skills");
-  skillsBtn.classList.add("primary");
-  infoBtn.classList.remove("primary");
-  educationBtn.classList.remove("primary");
-  experienceBtn.classList.remove("primary");
-
-  // Skills category filtering logic
-  const skillCategories = document.querySelectorAll(".skill-categories button");
-  const skillsListItems = document.querySelectorAll(".skills-list li");
-
-  skillCategories.forEach((button) => {
-    button.addEventListener("click", () => {
-      const filterValue = button.getAttribute("data-filter");
-
-      // Remove 'active' class from all buttons
-      skillCategories.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      // Show or hide skills based on the selected filter
-      skillsListItems.forEach((item) => {
-        if (
-          filterValue === "*" ||
-          item.classList.contains(filterValue.substring(1))
-        ) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
+        navLinks.forEach((link) => link.classList.remove("active"));
+        nav.classList.add("active");
       });
     });
-  });
 
-  // Show all skills by default
-  skillCategories[0].click();
-});
+    // Helper functions to add and remove active class
+    const removeActiveClass = () => {
+      navLinks.forEach((link) => link.classList.remove("active"));
+    };
 
-// about
-const infoContent = `
-          <ul>
-            <li>
-              <h6>Name:</h6>
-              <h5>Nickolas Paraskevopoulos</h5>
+    const addActiveClass = (id) => {
+      const activeLink = document.querySelector(
+        `.floating-nav a[href="#${id}"]`
+      );
+      if (activeLink) {
+        removeActiveClass();
+        activeLink.classList.add("active");
+      }
+    };
+
+    // ================== NAVIGATION LOGIC ==================
+    const sections = document.querySelectorAll("header, section");
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          addActiveClass(entry.target.id);
+        }
+      });
+    };
+
+    const observerOptions = {
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    navLinks.forEach((nav) => {
+      nav.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetID = nav.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetID);
+
+        targetSection.scrollIntoView({ behavior: "smooth" });
+
+        removeActiveClass();
+        nav.classList.add("active");
+      });
+    });
+
+    // ================== HEADER SECTION ==================
+
+    // Set profile image
+    const profileImage = document.getElementById("profileImage");
+    profileImage.src = headerData.profileImage;
+
+    // Set intro text
+    const introText = document.getElementById("introText");
+    introText.textContent = headerData.introText;
+
+    // Set title text
+    const titleText = document.getElementById("titleText");
+    titleText.innerHTML = `${headerData.title.main} <br /><span>${headerData.title.location}</span>`;
+
+    // Set bio text
+    const bioText = document.getElementById("bioText");
+    bioText.textContent = headerData.bio;
+
+    // Set CTA buttons
+    const ctaButtonsContainer = document.getElementById("ctaButtonsContainer");
+    headerData.ctaButtons.forEach((button) => {
+      const anchor = document.createElement("a");
+      anchor.href = button.link;
+      anchor.textContent = button.text;
+      if (button.text === "Download Resume/CV") {
+        anchor.classList.add("btn", "primary");
+      } else {
+        anchor.classList.add("btn");
+      }
+      if (button.newTab) anchor.setAttribute("target", "_blank");
+      ctaButtonsContainer.appendChild(anchor);
+    });
+
+    // Set social links
+    const socialLinksContainer = document.getElementById(
+      "socialLinksContainer"
+    );
+    headerData.socialLinks.forEach((link) => {
+      const anchor = document.createElement("a");
+      anchor.href = link.link;
+      anchor.classList.add("contact-option");
+      anchor.innerHTML = `<i class="${link.icon}"></i>`;
+      if (link.newTab) anchor.setAttribute("target", "_blank");
+      socialLinksContainer.appendChild(anchor);
+    });
+
+    // ================== ABOUT SECTION ==================
+
+    // Set about title
+    const aboutTitle = document.getElementById("aboutTitle");
+    aboutTitle.textContent = aboutData.title;
+
+    // Set about profile image
+    const aboutProfileImage = document.getElementById("aboutProfileImage");
+    aboutProfileImage.src = aboutData.profileImage;
+
+    // Set about description
+    const aboutDescription = document.getElementById("aboutDescription");
+    aboutDescription.textContent = aboutData.description;
+
+    // ================== RESUME SECTION ==================
+
+    const resumeHeader = document.querySelector("#resume h1");
+    const resumeCaption = document.querySelector("#resume p");
+    resumeHeader.textContent = resumeData.resumeHeader;
+    resumeCaption.textContent = resumeData.resumeCaption;
+
+    const menuContainer = document.querySelector(".resume-left menu");
+    resumeData.categories.forEach((category) => {
+      const button = document.createElement("button");
+      button.classList.add("btn", category.className);
+      if (category.default) button.classList.add("primary"); // Mark default button
+      button.textContent = category.name;
+      menuContainer.appendChild(button);
+    });
+
+    // Helper function to set resume content
+    const setResumeContent = (content, className) => {
+      const resumeRightContent = document.getElementById("resumeRightContent");
+      resumeRightContent.innerHTML = content;
+      resumeRightContent.className = `resume-right ${className}`;
+    };
+
+    // Helper function to update active button class
+    const updateActiveButton = (clickedButton) => {
+      const buttons = document.querySelectorAll(".resume-left button");
+      buttons.forEach((btn) => btn.classList.remove("primary")); // Remove 'primary' class from all buttons
+      clickedButton.classList.add("primary"); // Add 'primary' class to the clicked button
+    };
+
+    // Set Resume Content for Experience
+    const setExperienceContent = (button) => {
+      const experienceContent = `
+    <h4>Experience</h4>
+    <ul>
+      ${resumeData.experience
+        .map(
+          (item) => `
+        <li>
+          <h6>${item.date}</h6>
+          <h5><span>${item.company} |</span> ${item.position}</h5>
+          <p>${item.description}</p>
+        </li>
+      `
+        )
+        .join("")}
+    </ul>`;
+      setResumeContent(experienceContent, "experience");
+      updateActiveButton(button);
+    };
+
+    // Set Resume Content for Education
+    const setEducationContent = (button) => {
+      const educationContent = `
+    <h4>Education</h4>
+    <ul>
+      ${resumeData.education
+        .map(
+          (item) => `
+        <li>
+          <h5><span>${item.degree},</span> ${item.institution}</h5>
+          <p>${item.date}</p>
+        </li>
+      `
+        )
+        .join("")}
+    </ul>`;
+      setResumeContent(educationContent, "education");
+      updateActiveButton(button);
+    };
+
+    // Set Resume Content for Skills with Logos
+    const setSkillsContent = (button) => {
+      const skillCategories = ["All", ...resumeData.skills.categories]; // Add "All" category
+      const skillItems = resumeData.skills.items;
+      const skillsContent = `
+    <h4>Skills</h4>
+    <menu class="skill-categories">
+      ${skillCategories
+        .map(
+          (category) =>
+            `<button class="btn" data-filter="${category.toLowerCase()}">${category}</button>`
+        )
+        .join("")}
+    </menu>
+    <div class="container skills-container">
+      <ul class="skills-list">
+        ${Object.keys(skillItems)
+          .map(
+            (category) => `
+          ${skillItems[category]
+            .map(
+              (skill) => `
+            <li class="${category.toLowerCase()}">
+              <img src="${skill.logo}" alt="${skill.name} logo" />
             </li>
-            <li>
-              <h6>Experience:</h6>
-              <h5>6+ years (2018-Present)</h5>
-            </li>
-            <li>
-              <h6>Email:</h6>
-              <h5>nikoparas1@gmail.com</h5>
-            </li>
-            <li>
-              <h6>Nationality:</h6>
-              <h5>Greek/American</h5>
-            </li>
-            <li>
-              <h6>Freelance & collabs:</h6>
-              <h5>Available</h5>
-            </li>
-            <li>
-              <h6>Languages:</h6>
-              <h5>English/Greek</h5>
-            </li>
-            <li>
-              <h6>Phone:</h6>
-              <h5>(703)-835-1575</h5>
-            </li>
-          </ul>
-`;
-const infoBtn = document.querySelector(".info-btn");
-infoBtn.addEventListener("click", () => {
-  setResumeContent(infoContent, "info");
-  // resumeRight.innerHTML = infoContent;
-  // resumeRight.className = "about-body ul";
-  infoBtn.classList.add("primary");
-  // remove classes from other buttons
-  skillsBtn.classList.remove("primary");
-  educationBtn.classList.remove("primary");
-  experienceBtn.classList.remove("primary");
-});
+          `
+            )
+            .join("")}
+        `
+          )
+          .join("")}
+      </ul>
+    </div>`;
+      setResumeContent(skillsContent, "skills");
+      updateActiveButton(button);
 
-// PROJECTS
-const containerEl = document.querySelector(".projects-container");
-let mixer = mixitup(containerEl, {
-  animation: {
-    enable: false,
-  },
-});
+      // Filtering logic for the skills categories
+      const skillButtons = document.querySelectorAll(
+        ".skill-categories button"
+      );
+      const skillsListItems = document.querySelectorAll(".skills-list li");
 
-mixer.filter("*");
+      skillButtons.forEach((categoryButton) => {
+        categoryButton.addEventListener("click", () => {
+          const filterValue = categoryButton.getAttribute("data-filter");
 
-const projectCategories = document.querySelectorAll(
-  ".project-categories button"
-);
+          // Remove 'active' class from all buttons and add to the clicked one
+          skillButtons.forEach((btn) => btn.classList.remove("active"));
+          categoryButton.classList.add("active");
 
-const removePrimaryClass = (categories) => {
-  categories.forEach((category) => {
-    category.classList.remove("primary");
-  });
-};
+          // Filter skills based on category
+          skillsListItems.forEach((item) => {
+            if (filterValue === "all" || item.classList.contains(filterValue)) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
 
-projectCategories.forEach((category) => {
-  category.addEventListener("click", () => {
-    removePrimaryClass(projectCategories);
-    category.classList.add("primary");
-  });
-});
+      // Show all skills by default
+      skillButtons[0].click();
+    };
 
-// THEME
-const themeToggle = document.querySelector(".nav-btn");
+    // Set Resume Content for Info
+    const setInfoContent = (button) => {
+      const infoFields = Object.entries(resumeData.info); // Get key-value pairs of info data
+      const infoContent = `
+    <ul>
+      ${infoFields
+        .map(
+          ([label, value]) => `
+        <li>
+          <h6>${label.charAt(0).toUpperCase() + label.slice(1)}</h6>
+          <h5>${value}</h5>
+        </li>
+      `
+        )
+        .join("")}
+    </ul>`;
 
-const updateThemeIcon = () => {
-  if (document.body.className == "") {
-    themeToggle.innerHTML = `<i class="uil uil-moon"></i>`;
-  } else {
-    themeToggle.innerHTML = `<i class="uil uil-sun"></i>`;
-  }
-};
+      setResumeContent(infoContent, "info");
+      updateActiveButton(button);
+    };
 
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-theme-variables");
-  if (document.body.className == "") {
-    window.localStorage.setItem("portfolio-theme", "");
-    window.localStorage.setItem("theme-icon", "uil-moon");
-  } else {
-    window.localStorage.setItem("portfolio-theme", "dark-theme-variables");
-    window.localStorage.setItem("theme-icon", "uil-sun");
-  }
-  updateThemeIcon();
-});
+    // Event listeners for resume buttons
+    document
+      .querySelector(".experience-btn")
+      .addEventListener("click", (e) => setExperienceContent(e.target));
+    document
+      .querySelector(".education-btn")
+      .addEventListener("click", (e) => setEducationContent(e.target));
+    document
+      .querySelector(".skills-btn")
+      .addEventListener("click", (e) => setSkillsContent(e.target));
+    document
+      .querySelector(".info-btn")
+      .addEventListener("click", (e) => setInfoContent(e.target));
 
-// use theme from local storage
-const bodyClass = window.localStorage.getItem("portfolio-theme");
-const iconClass = window.localStorage.getItem("theme-icon");
-document.body.className = bodyClass;
-themeToggle.innerHTML = `<i class="uil ${iconClass || "uil-moon"}"></i>`;
+    // Load default experience content on page load
+    setExperienceContent(document.querySelector(".experience-btn"));
+
+    // ================== PROJECTS SECTION ==================
+
+    // Set project section title and description
+    const projectsTitle = document.querySelector("#projects h1");
+    const projectsDescription = document.querySelector("#projects p");
+    projectsTitle.textContent = projectsData.title;
+    projectsDescription.textContent = projectsData.description;
+
+    // Set project categories
+    const projectCategoriesContainer = document.querySelector(
+      ".project-categories"
+    );
+    projectsData.categories.forEach((category) => {
+      const button = document.createElement("button");
+      button.classList.add("btn");
+      button.setAttribute("data-filter", category.filter);
+      button.textContent = category.name;
+      projectCategoriesContainer.appendChild(button);
+    });
+
+    // Set project list
+    const projectsContainer = document.querySelector(".projects-container");
+    projectsData.projectsList.forEach((project) => {
+      const projectElement = document.createElement("article");
+      projectElement.classList.add("project", "mix", project.category);
+      projectElement.setAttribute("data-order", project.order);
+
+      projectElement.innerHTML = `
+        <div class="project-img">
+          <img src="${project.image}" alt="${project.title}" />
+        </div>
+        <h5>${project.title}</h5>
+        <p>${project.description}</p>
+        <div class="project-cta">
+          <a href="${project.liveLink}" class="btn primary" target="_blank">
+            <i class="uil uil-link-h"></i>
+          </a>
+          <a href="${project.githubLink}" class="btn" target="_blank">
+            <i class="uil uil-github"></i>
+          </a>
+        </div>
+      `;
+      projectsContainer.appendChild(projectElement);
+    });
+
+    // Initialize MixItUp filtering
+    const mixer = mixitup(projectsContainer, {
+      animation: {
+        enable: false,
+      },
+    });
+    mixer.filter("*");
+
+    // ================== CONTACT SECTION ==================
+
+    // Set contact section title
+    const contactTitle = document.querySelector("#contact h1");
+    contactTitle.textContent = contactData.title;
+
+    // Set contact form placeholders
+    const contactForm = document.querySelector("#contact form");
+    contactForm.setAttribute("action", contactData.form.action);
+    contactForm.innerHTML = `
+      <input type="text" name="Name" placeholder="${contactData.form.namePlaceholder}" required />
+      <input type="email" name="Email" placeholder="${contactData.form.emailPlaceholder}" required />
+      <textarea rows="7" name="Message" placeholder="${contactData.form.messagePlaceholder}" required></textarea>
+      <button type="submit" class="btn primary">${contactData.form.submitButton}</button>
+    `;
+
+    // Set contact options (icons and links)
+    const contactOptionsContainer = document.querySelector(".contact-options");
+    contactData.contactOptions.forEach((option) => {
+      const anchor = document.createElement("a");
+      anchor.href = option.link;
+      anchor.classList.add("contact-option");
+      anchor.innerHTML = `<i class="${option.icon}"></i>`;
+      if (option.newTab) anchor.setAttribute("target", "_blank");
+      contactOptionsContainer.appendChild(anchor);
+    });
+
+    // Handle form submission with reset
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      const formData = new FormData(contactForm); // Create FormData object
+      const actionUrl = contactForm.getAttribute("action"); // Get action URL from form
+      const formObject = Object.fromEntries(formData); // Convert FormData to an object
+
+      // Submit form data via Fetch API
+      fetch(actionUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formObject), // Convert form data to JSON string
+      })
+        .then((response) => {
+          if (response.ok) {
+            alert("Thank you! Your message has been sent.");
+            contactForm.reset(); // Reset the form fields
+          } else {
+            alert("Something went wrong. Please try again.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting the form:", error);
+          alert("An error occurred. Please try again later.");
+        });
+    });
+  })
+  .catch((error) => console.error("Error loading content:", error));

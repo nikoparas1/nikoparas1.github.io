@@ -1,0 +1,233 @@
+{
+  "nav": {
+    "topNav": {
+      "brandName": "NICKOLAS PARASKEVOPOULOS",
+      "brandLink": "index.html",
+      "themeToggle": {
+        "iconLight": "uil uil-moon",
+        "iconDark": "uil uil-sun"
+      }
+    },
+    "floatingNav": [
+      { "icon": "uil uil-estate", "link": "#home" },
+      { "icon": "uil uil-user", "link": "#about" },
+      { "icon": "uil uil-clipboard-alt", "link": "#resume" },
+      { "icon": "uil uil-folder-open", "link": "#projects" },
+      { "icon": "uil uil-phone", "link": "#contact" }
+    ]
+  },
+
+  "header": {
+    "profileImage": "./assets/portfoliopfp.jpeg",
+    "introText": "Hi, I'm Nickolas Paraskevopoulos",
+    "title": {
+      "main": "Fullstack Software Developer",
+      "location": "Based in Fairfax, Virginia"
+    },
+    "bio": "I am a 21-year-old undergraduate student at Virginia Tech, working toward my Bachelor's of Science in Computer Science, which I will complete as of May 2025. I currently work as a mobile software developer at SAIC in Alexandria, VA. I will be pursuing a Master's of Engineering in Computer Science with a focus on Software Engineering and Machine Learning, and will be graduating in the Spring of 2026 through Virginia Tech's (4+1) accelerated program.",
+    "ctaButtons": [
+      {
+        "text": "My Projects",
+        "link": "#projects"
+      },
+      {
+        "text": "Download Resume/CV",
+        "link": "./assets/Nickolas Paraskevopoulos Resume 2024.pdf",
+        "newTab": true
+      },
+      {
+        "text": "Contact Me",
+        "link": "#contact"
+      }
+    ],
+    "socialLinks": [
+      {
+        "icon": "uil uil-envelope",
+        "link": "mailto:nikoparas1@gmail.com"
+      },
+      {
+        "icon": "uil uil-linkedin",
+        "link": "https://www.linkedin.com/in/nickolas-paraskevopoulos/",
+        "newTab": true
+      },
+      {
+        "icon": "uil uil-phone",
+        "link": "tel:(703)-835-1575"
+      },
+      {
+        "icon": "uil uil-github",
+        "link": "https://github.com/nikoparas1",
+        "newTab": true
+      }
+    ]
+  },
+  "about": {
+    "profileImage": "./assets/headshot.jpeg",
+    "title": "About Me",
+    "description": "Hello, I’m Nickolas Paraskevopoulos, a dedicated student at Virginia Tech, studying Computer Science within the College of Engineering. I am on track to graduate with my bachelor’s degree in the Spring of 2025 and will be pursuing a Master's of Engineering in Computer Science, with concentrations in Software Engineering and Machine Learning, and expect to graduate in the Spring of 2026. Driven by a passion for technology and a commitment to innovation, I consistently engage in personal development through technical projects in my free time, further enhancing my skills and knowledge outside of formal coursework. As a result of this, I have gained extensive hands-on experience while maintaining a strong GPA of 3.5. In my current role as a Mobile Software Developer and through two impactful internships, I’ve gained extensive experience in software development, contributing to real-world projects and honing my technical abilities. I am proficient in a wide range of programming languages including Java, C, Python, JavaScript, TypeScript, Kotlin, SQL, HTML, CSS, and XML. My expertise in data structures, algorithms, and object-oriented programming allows me to approach complex challenges with both creativity and precision. Additionally, I have a solid understanding of database management systems, working extensively with PostgreSQL, Supabase, and SQLite. I’m eager to continue applying my skills and knowledge as I further my education and contribute to the tech industry’s evolving landscape with innovation and enthusiasm."
+  },
+  "resume": {
+    "resumeHeader": "Why you should hire me.",
+    "resumeCaption": "Explore my experience, education, and skills to see how I can bring value and expertise to your team.",
+    "categories": [
+      { "name": "Experience", "className": "experience-btn", "default": true },
+      { "name": "Education", "className": "education-btn" },
+      { "name": "Skills", "className": "skills-btn" },
+      { "name": "Info", "className": "info-btn" }
+    ],
+    "experience": [
+      {
+        "date": "June 2024 - Present",
+        "position": "Mobile Application Developer",
+        "company": "SAIC",
+        "description": "Developing mobile applications for enterprise use."
+      },
+      {
+        "date": "May 2023 - August 2023",
+        "position": "Software Engineering Intern",
+        "company": "Pangiam Labs",
+        "description": "Worked on various software engineering projects."
+      },
+      {
+        "date": "June 2020 - August 2020",
+        "position": "Software Engineering Intern",
+        "company": "Ascendra inc.",
+        "description": "Contributed to software development tasks."
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor's of Science in Computer Science",
+        "institution": "Virginia Tech",
+        "date": "August 2021 - May 2025"
+      },
+      {
+        "degree": "Master's of Engineering in Computer Science",
+        "institution": "Virginia Tech",
+        "date": "August 2025 - May 2026"
+      }
+    ],
+    "skills": {
+      "categories": ["Languages", "Frameworks", "Technologies", "Platforms"],
+      "items": {
+        "Languages": [
+          { "name": "C", "logo": "./assets/logos/c_logo.svg" },
+          { "name": "Python", "logo": "./assets/logos/python_logo.svg" },
+          { "name": "Java", "logo": "./assets/logos/java_logo.svg" },
+          { "name": "Kotlin", "logo": "./assets/logos/kotlin_logo.svg" }
+        ],
+        "Frameworks": [
+          { "name": "React", "logo": "./assets/logos/react_logo.svg" },
+          { "name": "NextJS", "logo": "./assets/logos/nextjs_logo.svg" },
+          { "name": "Expo", "logo": "./assets/logos/expo_logo.svg" }
+        ],
+        "Technologies": [
+          { "name": "Docker", "logo": "./assets/logos/docker_logo.svg" },
+          { "name": "Google Cloud", "logo": "./assets/logos/gcloud_logo.svg" },
+          { "name": "PostgreSQL", "logo": "./assets/logos/pg_logo.svg" }
+        ],
+        "Platforms": [
+          { "name": "Linux", "logo": "./assets/logos/linux_logo.svg" },
+          { "name": "Android", "logo": "./assets/logos/android_logo.svg" }
+        ]
+      }
+    },
+    "info": {
+      "name": "Nickolas Paraskevopoulos",
+      "experience": "6+ years (2018-Present)",
+      "email": "nikoparas1@gmail.com",
+      "nationality": "Greek/American",
+      "freelance": "Available",
+      "languages": "English/Greek",
+      "phone": "(703)-835-1575"
+    }
+  },
+  "projects": {
+    "title": "Technical Projects",
+    "description": "See how I apply my skills through innovative personal projects, pushing the boundaries of technology and problem-solving.",
+    "categories": [
+      { "name": "All", "filter": "*" },
+      { "name": "Frontend", "filter": ".frontend" },
+      { "name": "Backend", "filter": ".backend" },
+      { "name": "Fullstack", "filter": ".fullstack" },
+      { "name": "UI/UX", "filter": ".uiux" }
+    ],
+    "projectsList": [
+      {
+        "order": 1,
+        "title": "ORA Fitness AI",
+        "category": "fullstack",
+        "image": "./assets/projects/ora_ai.png",
+        "description": "A fitness app with AI meal logging and fitness tracking.",
+        "liveLink": "https://www.orafitness.ai/",
+        "githubLink": "https://github.com/nikoparas1"
+      },
+      {
+        "order": 2,
+        "title": "Music Database Management System",
+        "category": "backend",
+        "image": "./assets/projects/music_dbms_project(light).png",
+        "description": "A scalable music database system built with Java.",
+        "liveLink": "#",
+        "githubLink": "https://github.com/nikoparas1"
+      },
+      {
+        "order": 3,
+        "title": "Project 3",
+        "category": "frontend",
+        "image": "./assets/projects/music_dbms_project(dark).png",
+        "description": "A scalable music database system built with Java.",
+        "liveLink": "#",
+        "githubLink": "https://github.com/nikoparas1"
+      },
+      {
+        "order": 4,
+        "title": "Project 4",
+        "category": "uiux",
+        "image": "./assets/projects/music_dbms_project(light).png",
+        "description": "A scalable music database system built with Java.",
+        "liveLink": "#",
+        "githubLink": "https://github.com/nikoparas1"
+      },
+      {
+        "order": 5,
+        "title": "Project 5",
+        "category": "fullstack",
+        "image": "./assets/projects/music_dbms_project(light).png",
+        "description": "A scalable music database system built with Java.",
+        "liveLink": "#",
+        "githubLink": "https://github.com/nikoparas1"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Me",
+    "form": {
+      "action": "https://formspree.io/f/mwpejoaq",
+      "namePlaceholder": "Full Name",
+      "emailPlaceholder": "Email Address",
+      "messagePlaceholder": "Message",
+      "submitButton": "Send"
+    },
+    "contactOptions": [
+      {
+        "icon": "uil uil-envelope",
+        "link": "mailto:nikoparas1@gmail.com"
+      },
+      {
+        "icon": "uil uil-linkedin",
+        "link": "https://www.linkedin.com/in/nickolas-paraskevopoulos/",
+        "newTab": true
+      },
+      {
+        "icon": "uil uil-phone",
+        "link": "tel:(703)-835-1575"
+      },
+      {
+        "icon": "uil uil-github",
+        "link": "https://github.com/nikoparas1",
+        "newTab": true
+      }
+    ]
+  }
+}

@@ -279,7 +279,7 @@ header {
 
 .header-container {
   display: contents;
-}
+} 
 
 .header-img {
   grid-column: 1 / 2;
@@ -326,6 +326,7 @@ header {
 .header-cta a {
   border-radius: var(--border-radius);
   font-size: 1.2rem;
+
 }
 
 .header-socials {
@@ -642,7 +643,7 @@ form textarea {
 }
 
 form button {
-  width: fit-content;
+  /* width: fit-content; */
   border: 0;
   padding: 0.8rem 2rem;
   border-radius: var(--border-radius);
