@@ -30,82 +30,41 @@
     <!-- TOP NAV BAR -->
     <nav>
       <div class="container nav-container">
-        <a href="index.html" id="refreshLink">NICKOLAS PARASKEVOPOULOS</a>
-        <button class="nav-btn">
-          <i class="uil uil-moon"></i>
+        <a id="brandLink"></a>
+        <button class="nav-btn" id="themeToggleButton">
+          <i id="themeIcon"></i>
         </button>
       </div>
     </nav>
+
     <!-- FLOATING NAV BAR -->
-    <menu class="floating-nav">
-      <a class="active" href="#home"><i class="uil uil-estate"></i></a>
-      <a href="#about"><i class="uil uil-user"></i></a>
-      <a href="#resume"><i class="uil uil-clipboard-alt"></i></a>
-      <a href="#projects"><i class="uil uil-folder-open"></i></a>
-      <a href="#contact"><i class="uil uil-phone"></i></a>
-    </menu>
+    <menu class="floating-nav" id="floatingNavContainer"></menu>
 
     <!-- HEADER -->
     <header id="home">
       <div class="header-container" data-aos="fade-up">
         <div class="header-img" data-aos="fade-down" data-aos-delay="800">
-          <img src="./assets/portfoliopfp.jpeg" alt="Header Image" />
+          <img id="profileImage" alt="Profile Picture" />
         </div>
         <div class="header-content">
           <div class="header-text">
-            <h5 data-aos="fade-in">Hi, I'm Nickolas Paraskevopoulos</h5>
-            <h1 data-aos="fade-in">
-              Fullstack <span>Software Developer</span><br />Based in Fairfax,
-              Virginia
-            </h1>
-            <p data-aos="fade-in">
-              I am a 21-year-old undergraduate student at Virginia Tech, working
-              toward my Bachelor's of Science in Computer Science, which I will
-              complete as of May 2025. I currently work as a mobile software
-              developer at SAIC in Alexandria, VA. I will be pursuing a Master's
-              of Engineering in Computer Science with a focus on Software
-              Engineering and Machine Learning, and will be graduating in the
-              Spring of 2026 through Virginia Tech's (4+1) accelerated program.
-            </p>
+            <h5 id="introText" data-aos="fade-in"></h5>
+            <h1 id="titleText" data-aos="fade-in"></h1>
+            <p id="bioText" data-aos="fade-in"></p>
           </div>
-          <div class="header-cta" data-aos="fade-in">
-            <a href="#projects" class="btn">My Projects</a>
-            <a
-              href="./assets/Nickolas Paraskevopoulos Resume 2024.pdf"
-              target="_blank"
-              class="btn primary"
-              >Download Resume/CV</a
-            >
-            <a href="#contact" class="btn">Contact Me</a>
-          </div>
+          <div
+            class="header-cta"
+            id="ctaButtonsContainer"
+            data-aos="fade-in"
+          ></div>
         </div>
       </div>
-      <menu class="header-socials" data-aos="fade-left" data-aos-delay="800">
-        <a
-          href="mailto:nikoparas1@gmail.com"
-          class="contact-option"
-          target="_blank"
-        >
-          <i class="uil uil-envelope"></i>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/nickolas-paraskevopoulos/"
-          class="contact-option"
-          target="_blank"
-        >
-          <i class="uil uil-linkedin"></i>
-        </a>
-        <a href="tel:(703)-835-1575" class="contact-option" target="_blank">
-          <i class="uil uil-phone"></i>
-        </a>
-        <a
-          href="https://github.com/nikoparas1"
-          class="contact-option"
-          target="_blank"
-        >
-          <i class="uil uil-github"></i>
-        </a>
-      </menu>
+      <menu
+        class="header-socials"
+        id="socialLinksContainer"
+        data-aos="fade-left"
+        data-aos-delay="800"
+      ></menu>
     </header>
 
     <!-- ABOUT -->
@@ -116,39 +75,20 @@
         data-aos-delay="200"
       >
         <div class="about">
-          <h1>About Me</h1>
-          <div class="header-img" data-aos="fade-left" data-aos-delay="200">
-            <img src="./assets/headshot.jpeg" alt="Header Image" />
+          <h1 id="aboutTitle"></h1>
+          <div
+            class="header-img"
+            id="aboutProfileImageContainer"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
+            <img id="aboutProfileImage" alt="About Image" />
           </div>
-          <p>
-            Hello, I’m Nickolas Paraskevopoulos, a dedicated student at Virginia
-            Tech, studying Computer Science within the College of Engineering. I
-            am on track to graduate with my bachelor’s degree in the Spring of
-            2025 and will be pursuing a Master's of Engineering in Computer
-            Science, with concentrations in Software Engineering and Machine
-            Learning, and expect to graduate in the Spring of 2026. Driven by a
-            passion for technology and a commitment to innovation, I
-            consistently engage in personal development through technical
-            projects in my free time, further enhancing my skills and knowledge
-            outside of formal coursework. As a result of this, I have gained
-            extensive hands-on experience while maintaining a strong GPA of 3.5.
-            In my current role as a Mobile Software Developer and through two
-            impactful internships, I’ve gained extensive experience in software
-            development, contributing to real-world projects and honing my
-            technical abilities. I am proficient in a wide range of programming
-            languages including Java, C, Python, JavaScript, TypeScript, Kotlin,
-            SQL, HTML, CSS, and XML. My expertise in data structures,
-            algorithms, and object-oriented programming allows me to approach
-            complex challenges with both creativity and precision. Additionally,
-            I have a solid understanding of database management systems, working
-            extensively with PostgreSQL, Supabase, and SQLite. I’m eager to
-            continue applying my skills and knowledge as I further my education
-            and contribute to the tech industry’s evolving landscape with
-            innovation and enthusiasm.
-          </p>
+          <p id="aboutDescription"></p>
         </div>
       </div>
     </section>
+
     <!-- RESUME -->
     <section id="resume">
       <div
@@ -157,183 +97,28 @@
         data-aos-delay="200"
       >
         <div class="resume-left">
-          <h1>Why you should hire me.</h1>
-          <p>
-            Explore my experience, education, and skills to see how I can bring
-            value and expertise to your team.
-          </p>
-          <menu>
-            <button class="btn primary experience-btn">Experience</button>
-            <button class="btn education-btn">Education</button>
-            <button class="btn skills-btn">Skills</button>
-            <button class="btn info-btn">Info</button>
-          </menu>
+          <h1></h1>
+          <p></p>
+          <menu></menu>
         </div>
-        <div class="resume-right"></div>
+        <div class="resume-right" id="resumeRightContent"></div>
       </div>
     </section>
+
     <!-- PROJECTS -->
     <section id="projects" class="projects">
-      <h1>Technical Projects</h1>
-      <p>
-        See how I apply my skills through innovative personal projects, pushing
-        the boundaries of technology and problem-solving.
-      </p>
-      <menu class="project-categories">
-        <button class="btn" data-filter="*">All</button>
-        <button class="btn" data-filter=".frontend">Frontend</button>
-        <button class="btn" data-filter=".backend">Backend</button>
-        <button class="btn" data-filter=".fullstack">Fullstack</button>
-        <button class="btn" data-filter=".uiux">UI/UX</button>
-      </menu>
-      <div
-        class="container projects-container"
-        data-aos="fade-in"
-        data-aos-delay="200"
-      >
-        <article class="project mix fullstack" data-order="1">
-          <div class="project-img">
-            <img src="./assets/ora_ai.png" alt="Project One" />
-          </div>
-          <h5>Project One Title (Fullstack)</h5>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            similique sit repellat est placeat voluptatem!
-          </p>
-          <div class="project-cta">
-            <a
-              href="https://www.orafitness.ai/"
-              class="btn primary"
-              target="_blank"
-              ><i class="uil uil-link-h"></i
-            ></a>
-            <a href="https://github.com/nikoparas1/" class="btn" target="_blank"
-              ><i class="uil uil-github"></i
-            ></a>
-          </div>
-        </article>
-        <article class="project mix frontend" data-order="2">
-          <div class="project-img">
-            <img src="./assets/ora_ai.png" alt="Project Two" />
-          </div>
-          <h5>Project Two Title (Frontend)</h5>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            similique sit repellat est placeat voluptatem!
-          </p>
-          <div class="project-cta">
-            <a
-              href="https://www.orafitness.ai/"
-              class="btn primary"
-              target="_blank"
-              ><i class="uil uil-link-h"></i
-            ></a>
-            <a href="https://github.com/nikoparas1/" class="btn" target="_blank"
-              ><i class="uil uil-github"></i
-            ></a>
-          </div>
-        </article>
-        <article class="project mix backend" data-order="3">
-          <div class="project-img">
-            <img src="./assets/ora_ai.png" alt="Project Three" />
-          </div>
-          <h5>Project Three Title (Backend)</h5>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            similique sit repellat est placeat voluptatem!
-          </p>
-          <div class="project-cta">
-            <a
-              href="https://www.orafitness.ai/"
-              class="btn primary"
-              target="_blank"
-              ><i class="uil uil-link-h"></i
-            ></a>
-            <a href="https://github.com/nikoparas1/" class="btn" target="_blank"
-              ><i class="uil uil-github"></i
-            ></a>
-          </div>
-        </article>
-        <article class="project mix uiux" data-order="4">
-          <div class="project-img">
-            <img src="./assets/ora_ai.png" alt="Project Four" />
-          </div>
-          <h5>Project Four Title (UI/UX)</h5>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            similique sit repellat est placeat voluptatem!
-          </p>
-          <div class="project-cta">
-            <a
-              href="https://www.orafitness.ai/"
-              class="btn primary"
-              target="_blank"
-              ><i class="uil uil-link-h"></i
-            ></a>
-            <a href="https://github.com/nikoparas1/" class="btn" target="_blank"
-              ><i class="uil uil-github"></i
-            ></a>
-          </div>
-        </article>
-        <article class="project mix fullstack" data-order="5">
-          <div class="project-img">
-            <img src="./assets/ora_ai.png" alt="Project Five" />
-          </div>
-          <h5>Project Five Title (Fullstack)</h5>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-            similique sit repellat est placeat voluptatem!
-          </p>
-          <div class="project-cta">
-            <a
-              href="https://www.orafitness.ai/"
-              class="btn primary"
-              target="_blank"
-              ><i class="uil uil-link-h"></i
-            ></a>
-            <a href="https://github.com/nikoparas1/" class="btn" target="_blank"
-              ><i class="uil uil-github"></i
-            ></a>
-          </div>
-        </article>
-      </div>
+      <h1></h1>
+      <p></p>
+      <menu class="project-categories"></menu>
+      <div class="container projects-container"></div>
     </section>
+
     <!-- CONTACT -->
     <section id="contact" data-aos="fade-in" data-aos-delay="200">
       <div class="container contact-container">
-        <h1>Contact Me</h1>
-        <form action="https://formsubmit.co/nikoparas1@gmail.com" method="post">
-          <input type="text" name="Name" placeholder="Full Name" />
-          <input type="email" name="Email" placeholder="Email Address" />
-          <textarea rows="7" name="Message" placeholder="Message"></textarea>
-          <button type="submit" class="btn primary">Send</button>
-        </form>
-        <menu class="contact-options">
-          <a
-            href="mailto:nikoparas1@gmail.com"
-            class="contact-option"
-            target="_blank"
-          >
-            <i class="uil uil-envelope"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/nickolas-paraskevopoulos/"
-            class="contact-option"
-            target="_blank"
-          >
-            <i class="uil uil-linkedin"></i>
-          </a>
-          <a href="tel:(703)-835-1575" class="contact-option" target="_blank">
-            <i class="uil uil-phone"></i>
-          </a>
-          <a
-            href="https://github.com/nikoparas1"
-            class="contact-option"
-            target="_blank"
-          >
-            <i class="uil uil-github"></i>
-          </a>
-        </menu>
+        <h1></h1>
+        <form method="post"></form>
+        <menu class="contact-options"></menu>
       </div>
     </section>
 
