@@ -668,12 +668,19 @@ form button {
   }
 
   header {
-    padding-top: 3rem;
+    /* padding-top: 3rem;
     height: calc(100vh - 3rem);
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    text-align: center; */
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding-top: 5rem;
   }
 
   .header-container {
@@ -691,13 +698,29 @@ form button {
     text-align: center;
   }
 
+  .header-img {
+    width: 60%;
+    max-width: 60%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .header-cta a {
+    border-radius: var(--border-radius);
+    font-size: 0.6rem;
+  }
+
+  .header-container h5 {
+    font-size: 0.8rem;
+  }
+
   .header-container h1 {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 
   .header-container h1 span {
     color: var(--color-primary);
-    font-size: 1.4rem;
+    font-size: 1.0rem;
   }
 
   .header-container p {
@@ -733,17 +756,6 @@ form button {
   }
 
   .about p {
-    font-size: 0.8rem;
-  }
-
-  .header-img {
-    width: 80%;
-    height: auto;
-    margin-bottom: 2rem;
-  }
-
-  .header-cta a {
-    border-radius: var(--border-radius);
     font-size: 0.8rem;
   }
 
