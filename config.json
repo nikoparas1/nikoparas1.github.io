@@ -114,17 +114,33 @@
           { "name": "C", "logo": "./assets/logos/c_logo.svg" },
           { "name": "Python", "logo": "./assets/logos/python_logo.svg" },
           { "name": "Java", "logo": "./assets/logos/java_logo.svg" },
-          { "name": "Kotlin", "logo": "./assets/logos/kotlin_logo.svg" }
+          { "name": "Kotlin", "logo": "./assets/logos/kotlin_logo.svg" },
+          { "name": "TypeScript", "logo": "./assets/logos/ts_logo.svg" },
+          { "name": "JavaScript", "logo": "./assets/logos/js_logo.svg" },
+          { "name": "HTML", "logo": "./assets/logos/html_logo.svg" },
+          { "name": "CSS", "logo": "./assets/logos/css_logo.svg" },
+          { "name": "SQL", "logo": "./assets/logos/sql_logo.svg" },
+          { "name": "XML", "logo": "./assets/logos/xml_logo.svg" }
         ],
         "Frameworks": [
           { "name": "React", "logo": "./assets/logos/react_logo.svg" },
           { "name": "NextJS", "logo": "./assets/logos/nextjs_logo.svg" },
-          { "name": "Expo", "logo": "./assets/logos/expo_logo.svg" }
+          { "name": "Expo", "logo": "./assets/logos/expo_logo.svg" },
+          { "name": "FastAPI", "logo": "./assets/logos/fastapi_logo.svg" },
+          {
+            "name": "Jetpack Compose",
+            "logo": "./assets/logos/jetpack_logo.png"
+          }
         ],
         "Technologies": [
           { "name": "Docker", "logo": "./assets/logos/docker_logo.svg" },
           { "name": "Google Cloud", "logo": "./assets/logos/gcloud_logo.svg" },
-          { "name": "PostgreSQL", "logo": "./assets/logos/pg_logo.svg" }
+          { "name": "PostgreSQL", "logo": "./assets/logos/pg_logo.svg" },
+          { "name": "Supabase", "logo": "./assets/logos/supabase_logo.svg" },
+          { "name": "SQLite", "logo": "./assets/logos/sqlite_logo.svg" },
+          { "name": "Git", "logo": "./assets/logos/git_logo.svg" },
+          { "name": "Jira", "logo": "./assets/logos/jira_logo.svg" },
+          { "name": "Figma", "logo": "./assets/logos/figma_logo.svg" }
         ],
         "Platforms": [
           { "name": "Linux", "logo": "./assets/logos/linux_logo.svg" },
