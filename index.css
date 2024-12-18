@@ -498,7 +498,7 @@ header {
 
 .skill-categories .btn:hover {
   background: var(--color-primary-variant);
-  color: white
+  color: white;
 }
 
 .skill-categories .btn.active {
@@ -573,7 +573,7 @@ header {
 }
 
 .project-img {
-  max-height: 12rem;
+  max-height: 14rem;
   margin-bottom: 1.5rem;
   padding: 1rem;
   overflow: hidden;
@@ -599,6 +599,24 @@ header {
   font-size: 1.5rem;
   padding: 0.6rem 1rem;
   border-radius: var(--border-radius);
+}
+
+.toggle-description-btn {
+  display: block; /* Ensures the button can center with margin auto */
+  margin: 0.5rem auto 0 auto;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.toggle-description-btn:hover {
+  background-color: var(--color-gray-200);
+  /* color: var(--color-gray-100);  */
+  /* text-decoration: underline; */
 }
 
 /* CONTACT */
