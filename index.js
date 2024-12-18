@@ -46,6 +46,17 @@ fetch("./config.json")
         window.localStorage.setItem("theme-icon", "uil-sun");
       }
       updateThemeIcon();
+
+      const isDarkTheme = document.body.classList.contains(
+        "dark-theme-variables"
+      );
+      const projectImages = document.querySelectorAll(".project-img img");
+
+      projectImages.forEach((img) => {
+        const lightSrc = img.getAttribute("data-light");
+        const darkSrc = img.getAttribute("data-dark");
+        img.src = isDarkTheme ? darkSrc : lightSrc;
+      });
     });
 
     // Initialize theme on page load
@@ -365,6 +376,9 @@ fetch("./config.json")
 
     // ================== PROJECTS SECTION ==================
 
+    isDarkTheme = document.body.classList.contains("dark-theme-variables");
+    const DESCRIPTION_LIMIT = 50;
+
     // Set project section title and description
     const projectsTitle = document.querySelector("#projects h1");
     const projectsDescription = document.querySelector("#projects p");
@@ -386,16 +400,23 @@ fetch("./config.json")
     // Set project list
     const projectsContainer = document.querySelector(".projects-container");
     projectsData.projectsList.forEach((project) => {
+      const projectImage = isDarkTheme ? project.imageDark : project.imageLight;
+
       const projectElement = document.createElement("article");
       projectElement.classList.add("project", "mix", project.category);
       projectElement.setAttribute("data-order", project.order);
 
       projectElement.innerHTML = `
         <div class="project-img">
-          <img src="${project.image}" alt="${project.title}" />
+          <img 
+            src="${projectImage}" 
+            alt="${project.title}" 
+            data-light="${project.imageLight}" 
+            data-dark="${project.imageDark}" 
+          />
         </div>
         <h5>${project.title}</h5>
-        <p>${project.description}</p>
+        <p class="project-description">${project.description}</p>
         <div class="project-cta">
           <a href="${project.liveLink}" class="btn primary" target="_blank">
             <i class="uil uil-link-h"></i>
@@ -405,6 +426,38 @@ fetch("./config.json")
           </a>
         </div>
       `;
+
+      // Truncate text if it is over the limit
+      const descriptionElem = projectElement.querySelector(
+        ".project-description"
+      );
+      const fullText = project.description;
+
+      if (fullText.length > DESCRIPTION_LIMIT) {
+        const truncatedText = fullText.slice(0, DESCRIPTION_LIMIT) + "...";
+        descriptionElem.textContent = truncatedText;
+
+        // Create toggle button
+        const toggleButton = document.createElement("button");
+        toggleButton.textContent = "Expand";
+        toggleButton.classList.add("btn", "toggle-description-btn");
+        const projectCTA = projectElement.querySelector(".project-cta");
+        projectElement.insertBefore(toggleButton, projectCTA);
+
+        // Add event listener to toggle between truncated and full text
+        let isExpanded = false;
+        toggleButton.addEventListener("click", () => {
+          if (isExpanded) {
+            descriptionElem.textContent = truncatedText;
+            toggleButton.textContent = "Expand";
+          } else {
+            descriptionElem.textContent = fullText;
+            toggleButton.textContent = "Collapse";
+          }
+          isExpanded = !isExpanded;
+        });
+      }
+
       projectsContainer.appendChild(projectElement);
     });
 
