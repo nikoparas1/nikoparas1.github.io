@@ -294,7 +294,9 @@ fetch("./config.json")
             .map(
               (skill) => `
             <li class="${category.toLowerCase()}">
-              <img src="${skill.logo}" alt="${skill.name} logo" />
+              <a href="${skill.url}" target="_blank">
+                <img src="${skill.logo}" alt="${skill.name} logo" />
+              </a>
             </li>
           `
             )

@@ -24,7 +24,7 @@
       "main": "Fullstack Software Developer",
       "location": "Based in Fairfax, Virginia"
     },
-    "bio": "I am a 21-year-old undergraduate student at Virginia Tech, working toward my Bachelor's of Science in Computer Science, which I will complete as of May 2025. I currently work as a mobile software developer at SAIC in Alexandria, VA. I will be pursuing a Master's of Engineering in Computer Science with a focus on Software Engineering and Machine Learning, and will be graduating in the Spring of 2026 through Virginia Tech's (4+1) accelerated program.",
+    "bio": "I am a 22-year-old undergraduate student at Virginia Tech, working toward my Bachelor's of Science in Computer Science, which I will complete as of May 2025. I currently work as a mobile software developer at SAIC in Alexandria, VA. I will be pursuing a Master's of Engineering in Computer Science with a focus on Software Engineering and Machine Learning, and will be graduating in the Spring of 2026 through Virginia Tech's (4+1) accelerated program.",
     "ctaButtons": [
       {
         "text": "My Projects",
@@ -64,7 +64,7 @@
   "about": {
     "profileImage": "./assets/headshot.jpeg",
     "title": "About Me",
-    "description": "Hello, I’m Nickolas Paraskevopoulos, a dedicated student at Virginia Tech, studying Computer Science within the College of Engineering. I am on track to graduate with my bachelor’s degree in the Spring of 2025 and will be pursuing a Master's of Engineering in Computer Science, with concentrations in Software Engineering and Machine Learning, and expect to graduate in the Spring of 2026. Driven by a passion for technology and a commitment to innovation, I consistently engage in personal development through technical projects in my free time, further enhancing my skills and knowledge outside of formal coursework. As a result of this, I have gained extensive hands-on experience while maintaining a strong GPA of 3.5. In my current role as a Mobile Software Developer and through two impactful internships, I’ve gained extensive experience in software development, contributing to real-world projects and honing my technical abilities. I am proficient in a wide range of programming languages including Java, C, Python, JavaScript, TypeScript, Kotlin, SQL, HTML, CSS, and XML. My expertise in data structures, algorithms, and object-oriented programming allows me to approach complex challenges with both creativity and precision. Additionally, I have a solid understanding of database management systems, working extensively with PostgreSQL, Supabase, and SQLite. I’m eager to continue applying my skills and knowledge as I further my education and contribute to the tech industry’s evolving landscape with innovation and enthusiasm."
+    "description": "Hello, I’m Nickolas Paraskevopoulos, a dedicated student at Virginia Tech, studying Computer Science within the College of Engineering. I am on track to graduate with my bachelor’s degree in the Spring of 2025 and will be pursuing a Master's of Engineering in Computer Science, with concentrations in Software Engineering and Machine Learning, and expect to graduate in the Spring of 2026. Driven by a passion for technology and a commitment to innovation, I consistently engage in personal development through technical projects in my free time, further enhancing my skills and knowledge outside of formal coursework. As a result of this, I have gained extensive hands-on experience while maintaining a strong GPA of 3.6. In my current role as a Mobile Software Developer and through two impactful internships, I’ve gained extensive experience in software development, contributing to real-world projects and honing my technical abilities. I am proficient in a wide range of programming languages including Java, C, Python, JavaScript, TypeScript, Kotlin, SQL, HTML, CSS, and XML. My knowledge in data structures, algorithms, and object-oriented programming allows me to approach complex challenges with both creativity and precision. Additionally, I have a solid understanding of database management systems, working extensively with PostgreSQL, Supabase, and SQLite. I’m eager to continue applying my skills and knowledge as I further my education and contribute to the tech industry’s evolving landscape with innovation and enthusiasm."
   },
   "resume": {
     "resumeHeader": "Why you should hire me.",
@@ -111,42 +111,147 @@
       "categories": ["Languages", "Frameworks", "Technologies", "Platforms"],
       "items": {
         "Languages": [
-          { "name": "C", "logo": "./assets/logos/c_logo.svg" },
-          { "name": "Python", "logo": "./assets/logos/python_logo.svg" },
-          { "name": "Java", "logo": "./assets/logos/java_logo.svg" },
-          { "name": "Kotlin", "logo": "./assets/logos/kotlin_logo.svg" },
-          { "name": "TypeScript", "logo": "./assets/logos/ts_logo.svg" },
-          { "name": "JavaScript", "logo": "./assets/logos/js_logo.svg" },
-          { "name": "HTML", "logo": "./assets/logos/html_logo.svg" },
-          { "name": "CSS", "logo": "./assets/logos/css_logo.svg" },
-          { "name": "SQL", "logo": "./assets/logos/sql_logo.svg" },
-          { "name": "XML", "logo": "./assets/logos/xml_logo.svg" }
+          {
+            "name": "C",
+            "logo": "./assets/logos/c_logo.svg",
+            "url": "https://en.cppreference.com/w/c/language"
+          },
+          {
+            "name": "Python",
+            "logo": "./assets/logos/python_logo.svg",
+            "url": "https://www.python.org/"
+          },
+          {
+            "name": "Java",
+            "logo": "./assets/logos/java_logo.svg",
+            "url": "https://www.java.com/"
+          },
+          {
+            "name": "Kotlin",
+            "logo": "./assets/logos/kotlin_logo.svg",
+            "url": "https://kotlinlang.org/"
+          },
+          {
+            "name": "TypeScript",
+            "logo": "./assets/logos/ts_logo.svg",
+            "url": "https://www.typescriptlang.org/"
+          },
+          {
+            "name": "JavaScript",
+            "logo": "./assets/logos/js_logo.svg",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+          },
+          {
+            "name": "HTML",
+            "logo": "./assets/logos/html_logo.svg",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+          },
+          {
+            "name": "CSS",
+            "logo": "./assets/logos/css_logo.svg",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+          },
+          {
+            "name": "SQL",
+            "logo": "./assets/logos/sql_logo.svg",
+            "url": "https://www.w3schools.com/sql/"
+          },
+          {
+            "name": "XML",
+            "logo": "./assets/logos/xml_logo.svg",
+            "url": "https://www.w3.org/XML/"
+          }
         ],
         "Frameworks": [
-          { "name": "React", "logo": "./assets/logos/react_logo.svg" },
-          { "name": "NextJS", "logo": "./assets/logos/nextjs_logo.svg" },
-          { "name": "Expo", "logo": "./assets/logos/expo_logo.svg" },
-          { "name": "Flask", "logo": "./assets/logos/flask_logo.svg" },
-          { "name": "Django", "logo": "./assets/logos/django_logo.svg" },
-          { "name": "FastAPI", "logo": "./assets/logos/fastapi_logo.svg" },
+          {
+            "name": "React",
+            "logo": "./assets/logos/react_logo.svg",
+            "url": "https://react.dev/"
+          },
+          {
+            "name": "NextJS",
+            "logo": "./assets/logos/nextjs_logo.svg",
+            "url": "https://nextjs.org/"
+          },
+          {
+            "name": "Expo",
+            "logo": "./assets/logos/expo_logo.svg",
+            "url": "https://expo.dev/"
+          },
+          {
+            "name": "Flask",
+            "logo": "./assets/logos/flask_logo.svg",
+            "url": "https://flask.palletsprojects.com/"
+          },
+          {
+            "name": "Django",
+            "logo": "./assets/logos/django_logo.svg",
+            "url": "https://www.djangoproject.com/"
+          },
+          {
+            "name": "FastAPI",
+            "logo": "./assets/logos/fastapi_logo.svg",
+            "url": "https://fastapi.tiangolo.com/"
+          },
           {
             "name": "Jetpack Compose",
-            "logo": "./assets/logos/jetpack_logo.png"
+            "logo": "./assets/logos/jetpack_logo.png",
+            "url": "https://developer.android.com/jetpack/compose"
           }
         ],
         "Technologies": [
-          { "name": "Docker", "logo": "./assets/logos/docker_logo.svg" },
-          { "name": "Google Cloud", "logo": "./assets/logos/gcloud_logo.svg" },
-          { "name": "PostgreSQL", "logo": "./assets/logos/pg_logo.svg" },
-          { "name": "Supabase", "logo": "./assets/logos/supabase_logo.svg" },
-          { "name": "SQLite", "logo": "./assets/logos/sqlite_logo.svg" },
-          { "name": "Git", "logo": "./assets/logos/git_logo.svg" },
-          { "name": "Jira", "logo": "./assets/logos/jira_logo.svg" },
-          { "name": "Figma", "logo": "./assets/logos/figma_logo.svg" }
+          {
+            "name": "Docker",
+            "logo": "./assets/logos/docker_logo.svg",
+            "url": "https://www.docker.com/"
+          },
+          {
+            "name": "Google Cloud",
+            "logo": "./assets/logos/gcloud_logo.svg",
+            "url": "https://cloud.google.com/"
+          },
+          {
+            "name": "PostgreSQL",
+            "logo": "./assets/logos/pg_logo.svg",
+            "url": "https://www.postgresql.org/"
+          },
+          {
+            "name": "Supabase",
+            "logo": "./assets/logos/supabase_logo.svg",
+            "url": "https://supabase.com/"
+          },
+          {
+            "name": "SQLite",
+            "logo": "./assets/logos/sqlite_logo.svg",
+            "url": "https://www.sqlite.org/"
+          },
+          {
+            "name": "Git",
+            "logo": "./assets/logos/git_logo.svg",
+            "url": "https://git-scm.com/"
+          },
+          {
+            "name": "Jira",
+            "logo": "./assets/logos/jira_logo.svg",
+            "url": "https://www.atlassian.com/software/jira"
+          },
+          {
+            "name": "Figma",
+            "logo": "./assets/logos/figma_logo.svg",
+            "url": "https://www.figma.com/"
+          }
         ],
         "Platforms": [
-          { "name": "Linux", "logo": "./assets/logos/linux_logo.svg" },
-          { "name": "Android", "logo": "./assets/logos/android_logo.svg" }
+          {
+            "name": "Linux",
+            "logo": "./assets/logos/linux_logo.svg",
+            "url": "https://www.linux.org/"
+          },
+          {
+            "name": "Android",
+            "logo": "./assets/logos/android_logo.svg",
+            "url": "https://www.android.com/"
+          }
         ]
       }
     },
