@@ -211,6 +211,36 @@ nav {
   cursor: pointer;
 }
 
+.nav-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#loginLink {
+  display: inline-block;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.login-popup {
+  position: absolute;
+  top: 3rem; /* or wherever you want it to appear */
+  right: 0;
+  background: var(--color-gray-0);
+  border: 1px solid var(--color-gray-200);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  width: 220px;
+  padding: 1rem;
+  z-index: 99;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Floating Nav Bar */
 
 .floating-nav {
@@ -355,6 +385,24 @@ header {
 .header-socials a:hover {
   background-color: var(--color-primary-variant);
   color: white;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  vertical-align: middle; /* keep the icon aligned with text */
+}
+
+.edit-btn img {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Already have .admin-only to hide these icons unless in admin mode */
+.admin-only {
+  display: none; /* hidden until admin mode is enabled */
 }
 
 /* ABOUT */

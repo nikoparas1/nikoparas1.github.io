@@ -1,8 +1,12 @@
 {
+  "assets": {
+    "editIcon": "./assets/logos/sqlite_logo.svg"
+  },
   "nav": {
     "topNav": {
       "brandName": "NICKOLAS PARASKEVOPOULOS",
       "brandLink": "index.html",
+      "loginText": "Login",
       "themeToggle": {
         "iconLight": "uil uil-moon",
         "iconDark": "uil uil-sun"

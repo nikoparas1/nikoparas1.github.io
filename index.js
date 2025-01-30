@@ -2,6 +2,8 @@
 fetch("./config.json")
   .then((response) => response.json())
   .then((data) => {
+    const editIcon = data.assets.editIcon;
+
     const navData = data.nav;
     const headerData = data.header;
     const aboutData = data.about;
@@ -13,6 +15,95 @@ fetch("./config.json")
     const brandLink = document.getElementById("brandLink");
     brandLink.href = navData.topNav.brandLink;
     brandLink.textContent = navData.topNav.brandName;
+
+    const loginLink = document.getElementById("loginLink");
+    loginLink.href = "javascript:void(0)";
+    loginLink.textContent = navData.topNav.loginText;
+
+    const loginPopUp = document.createElement("div");
+    loginPopUp.id = "loginPopup";
+    loginPopUp.classList.add("login-popup", "hidden");
+    loginPopUp.innerHTML = `
+      <div class="popup-content">
+        <h4>Administrator Login</h4>
+        <input type="text" id="usernameInput" placeholder="Username" />
+        <input type="password" id="passwordInput" placeholder="Password" />
+        <button id="loginSubmitBtn" class="btn primary">Submit</button>
+        <p id="loginError" class="error-msg" style="display: none;">Invalid credentials.</p>
+      </div>
+    `;
+
+    document.body.appendChild(loginPopUp);
+
+    const loginSubmitBtn = loginPopup.querySelector("#loginSubmitBtn");
+    const loginError = loginPopup.querySelector("#loginError");
+    const usernameField = loginPopup.querySelector("#usernameInput");
+    const passwordField = loginPopup.querySelector("#passwordInput");
+
+    function enableAdminMode() {
+      const adminElements = document.querySelectorAll(".admin-only");
+      adminElements.forEach((el) => {
+        el.style.display = "inline-block";
+      });
+      console.log("Admin Mode Enabled");
+    }
+
+    function disableAdminMode() {
+      // Hide .admin-only elements
+      const adminElements = document.querySelectorAll(".admin-only");
+      adminElements.forEach((el) => {
+        el.style.display = "none";
+      });
+      console.log("Admin Mode disabled");
+    }
+
+    function refreshLoginLink() {
+      const loginLink = document.getElementById("loginLink");
+      if (userRole === "admin") {
+        loginLink.textContent = "Logout";
+      } else {
+        loginLink.textContent = "Login";
+      }
+    }
+
+    let userRole = localStorage.getItem("userRole") || "viewer";
+    if (userRole === "admin") {
+      enableAdminMode();
+    }
+
+    refreshLoginLink();
+
+    loginLink.addEventListener("click", () => {
+      if (userRole === "admin") {
+        userRole = "viewer";
+        localStorage.setItem("userRole", "viewer");
+        disableAdminMode();
+        refreshLoginLink();
+      } else {
+        loginPopup.classList.toggle("hidden");
+        loginError.style.display = "none";
+      }
+    });
+
+    const VALID_USERNAME = "admin";
+    const VALID_PASSWORD = "password123";
+
+    loginSubmitBtn.addEventListener("click", () => {
+      const username = usernameField.value.trim();
+      const password = passwordField.value.trim();
+
+      if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+        userRole = "admin";
+        localStorage.setItem("userRole", "admin");
+        enableAdminMode();
+        loginPopup.classList.add("hidden");
+        refreshLoginLink();
+      } else {
+        userRole = "viewer";
+        localStorage.setItem("userRole", "viewer");
+        loginError.style.display = "block";
+      }
+    });
 
     const themeToggleButton = document.getElementById("themeToggleButton");
     const themeIcon = document.getElementById("themeIcon");
@@ -140,11 +231,84 @@ fetch("./config.json")
       });
     });
 
+    function makeElementEditable(
+      element,
+      overrideKey,
+      defaultValue,
+      editIconSrc,
+      isImage = false
+    ) {
+      // 1) Load existing overrides
+      let siteOverrides =
+        JSON.parse(localStorage.getItem("siteOverrides")) || {};
+
+      // 2) Determine the current content for this element
+      let currentValue = siteOverrides[overrideKey] || defaultValue;
+
+      // 3) If it's an image, set `src`; if text, set `textContent` or `innerHTML`
+      if (isImage) {
+        element.src = currentValue;
+      } else {
+        element.textContent = currentValue;
+      }
+
+      // 4) Create an edit button (icon)
+      const editBtn = document.createElement("button");
+      editBtn.classList.add("admin-only", "edit-btn");
+      // Insert an <img> with the edit icon
+      const iconImg = document.createElement("img");
+      iconImg.src = editIconSrc;
+      iconImg.alt = "Edit";
+      editBtn.appendChild(iconImg);
+
+      // 5) Place the edit button *after* the element
+      //    If it's an inline text element (like <p> or <h1>), we can insert after it
+      element.parentNode.insertBefore(editBtn, element.nextSibling);
+
+      // 6) On click, show a prompt (or inline editor)
+      editBtn.addEventListener("click", () => {
+        if (isImage) {
+          // For images, prompt for a new URL
+          const newUrl = prompt("Enter new image URL:", currentValue);
+          if (newUrl && newUrl.trim() !== "") {
+            currentValue = newUrl.trim();
+            element.src = currentValue;
+            // Save to localStorage
+            siteOverrides[overrideKey] = currentValue;
+            localStorage.setItem(
+              "siteOverrides",
+              JSON.stringify(siteOverrides)
+            );
+          }
+        } else {
+          // For text, prompt for new text
+          const newText = prompt("Edit text:", currentValue);
+          if (newText !== null) {
+            currentValue = newText.trim();
+            element.textContent = currentValue;
+            // Save override
+            siteOverrides[overrideKey] = currentValue;
+            localStorage.setItem(
+              "siteOverrides",
+              JSON.stringify(siteOverrides)
+            );
+          }
+        }
+      });
+    }
+
     // ================== HEADER SECTION ==================
 
     // Set profile image
     const profileImage = document.getElementById("profileImage");
-    profileImage.src = headerData.profileImage;
+    // profileImage.src = headerData.profileImage;
+    makeElementEditable(
+      profileImage,
+      "header.profileImage",
+      headerData.profileImage,
+      editIcon,
+      true
+    );
 
     // Set intro text
     const introText = document.getElementById("introText");
