@@ -64,7 +64,7 @@
   "about": {
     "profileImage": "./assets/headshot.jpeg",
     "title": "About Me",
-    "description": "Hello, I’m Nickolas Paraskevopoulos, a dedicated student at Virginia Tech, studying Computer Science within the College of Engineering. I am on track to graduate with my bachelor’s degree in the Spring of 2025 and will be pursuing a Master's of Engineering in Computer Science, with concentrations in Software Engineering and Machine Learning, and expect to graduate in the Spring of 2026. Driven by a passion for technology and a commitment to innovation, I consistently engage in personal development through technical projects in my free time, further enhancing my skills and knowledge outside of formal coursework. As a result of this, I have gained extensive hands-on experience while maintaining a strong GPA of 3.6. In my current role as a Mobile Software Developer and through two impactful internships, I’ve gained extensive experience in software development, contributing to real-world projects and honing my technical abilities. I am proficient in a wide range of programming languages including Java, C, Python, JavaScript, TypeScript, Kotlin, SQL, HTML, CSS, and XML. My knowledge in data structures, algorithms, and object-oriented programming allows me to approach complex challenges with both creativity and precision. Additionally, I have a solid understanding of database management systems, working extensively with PostgreSQL, Supabase, and SQLite. I’m eager to continue applying my skills and knowledge as I further my education and contribute to the tech industry’s evolving landscape with innovation and enthusiasm."
+    "description": "Student at Virginia Tech pursuing a Bachelor’s in Computer Science (Spring 2025) and a Master’s of Engineering in Computer Science specializing in Software Engineering and Machine Learning (Spring 2026). With experience as a Mobile Software Engineer and two past internships, I’ve contributed to real-world software projects and strengthened my technical skills. I’ve been able to maintain a 3.6 GPA throughout my academic career as an Undergraduate student. I have strong foundations in data structures, algorithms, object-oriented programming, and database management systems, and am eager to continue innovating in the tech industry."
   },
   "resume": {
     "resumeHeader": "Why you should hire me.",
@@ -259,7 +259,7 @@
       "name": "Nickolas Paraskevopoulos",
       "experience": "6+ years (2018-Present)",
       "email": "nikoparas1@gmail.com",
-      "nationality": "Greek/American",
+      "nationality": "USA",
       "freelance": "Available",
       "languages": "English/Greek",
       "phone": "(703)-835-1575"
