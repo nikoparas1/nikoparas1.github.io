@@ -29,15 +29,36 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      # 1. Get your code
+      - uses: actions/checkout@v4
+
+      # 2. Set up Ruby (needed for Jekyll)
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+
+      # 3. Install your gems (jekyll, theme, etc)
+      - name: Install dependencies
+        run: |
+          gem install bundler jekyll
+          bundle install
+
+      # 4. Build the site into _site/
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --destination _site
+
+      # 5. Configure Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      # 6. Upload the built site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: _site
+
+      # 7. Deploy to Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
