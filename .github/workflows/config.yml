@@ -36,7 +36,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x'
+          ruby-version: '2.7'
 
       # 3. Install your gems (jekyll, theme, etc)
       - name: Install dependencies
