@@ -62,7 +62,7 @@
     ]
   },
   "about": {
-    "profileImage": "./assets/headshot.jpeg",
+    "profileImage": "./assets/headshot.jpg",
     "title": "About Me",
     "description": "Student at Virginia Tech pursuing a Bachelor’s in Computer Science (Spring 2025) and a Master’s of Engineering in Computer Science specializing in Software Engineering and Machine Learning (Spring 2026). With experience as a Mobile Software Engineer and two past internships, I’ve contributed to real-world software projects and strengthened my technical skills. I’ve been able to maintain a 3.6 GPA throughout my academic career as an Undergraduate student. I have strong foundations in data structures, algorithms, object-oriented programming, and database management systems, and am eager to continue innovating in the tech industry."
   },

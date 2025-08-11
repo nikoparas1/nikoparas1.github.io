@@ -375,6 +375,20 @@ header {
   gap: 2rem;
 }
 
+.about-img {
+  width: 30rem;
+  height: 36rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-inline: auto;
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* RESUME */
 .resume-container {
   display: grid;
@@ -784,11 +798,24 @@ form button {
     justify-content: space-between;
     text-align: left;
     padding: 0 2rem;
-    gap: 1rem;
+    gap: 3rem;
   }
 
   .about h1 {
     align-self: center;
+  }
+
+  .about-img {
+    width: 70%;
+    max-width: 70%;
+    height: auto;
+    /* margin-bottom: 2rem; */
+  }
+
+  .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .about p {
@@ -822,6 +849,7 @@ form button {
   .resume-container {
     grid-template-columns: 1fr;
     gap: 1rem;
+    padding: 0 1rem;
   }
 
   .resume-left menu {
