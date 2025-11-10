@@ -18,13 +18,13 @@
   },
 
   "header": {
-    "profileImage": "./assets/portfoliopfp.jpeg",
+    "profileImage": "./assets/portfolio.jpeg",
     "introText": "Hi, I'm Nickolas Paraskevopoulos",
     "title": {
       "main": "Fullstack Software Developer",
       "location": "Based in Fairfax, Virginia"
     },
-    "bio": "I am a 22-year-old undergraduate student at Virginia Tech, working toward my Bachelor's of Science in Computer Science, which I will complete as of May 2025. I currently work as a mobile software developer at SAIC in Alexandria, VA. I will be pursuing a Master's of Engineering in Computer Science with a focus on Software Engineering and Machine Learning, and will be graduating in the Spring of 2026 through Virginia Tech's (4+1) accelerated program.",
+    "bio": "I am a graduate student at Virginia Tech, pursuing a Master's of Engineering in Computer Science, specializing in Data Analytics & Artificial Intelligence, which I will complete as of December 2025.",
     "ctaButtons": [
       {
         "text": "My Projects",
@@ -64,11 +64,11 @@
   "about": {
     "profileImage": "./assets/headshot.jpg",
     "title": "About Me",
-    "description": "Student at Virginia Tech pursuing a Bachelor’s in Computer Science (Spring 2025) and a Master’s of Engineering in Computer Science specializing in Software Engineering and Machine Learning (Spring 2026). With experience as a Mobile Software Engineer and two past internships, I’ve contributed to real-world software projects and strengthened my technical skills. I’ve been able to maintain a 3.6 GPA throughout my academic career as an Undergraduate student. I have strong foundations in data structures, algorithms, object-oriented programming, and database management systems, and am eager to continue innovating in the tech industry."
+    "description": "Graduate student at Virginia Tech pursuing a Master's of Engineering in Computer Science, specializing in Data Analytics & Artificial Intelligence. With experience as a Mobile Software Engineer, I’ve contributed to real-world projects and strengthened my technical skills. I have strong foundations in data structures, algorithms, object-oriented programming, and database management systems, and am eager to continue innovating in the tech industry."
   },
   "resume": {
-    "resumeHeader": "Why you should hire me.",
-    "resumeCaption": "Explore my experience, education, and skills to see how I can bring value and expertise to your team.",
+    "resumeHeader": "Resume",
+    "resumeCaption": "Explore my experience, education, and skills",
     "categories": [
       { "name": "Experience", "className": "experience-btn", "default": true },
       { "name": "Education", "className": "education-btn" },
@@ -77,7 +77,7 @@
     ],
     "experience": [
       {
-        "date": "June 2024 - Present",
+        "date": "June 2024 - August 2025",
         "position": "Mobile Application Developer",
         "company": "SAIC",
         "description": "Developing mobile applications for enterprise use."
@@ -313,7 +313,7 @@
         "imageDark": "./assets/projects/ora_web(dark).png",
         "imageLight": "./assets/projects/ora_web(light).png",
         "description": "The Ora Nutrition Web Application is a modern and responsive Next.js-powered platform designed to promote and highlight the key features of the Ora Nutrition mobile app. This web application serves as the central hub for users to learn about the mobile app’s capabilities, its practical uses, and the benefits it brings to health-conscious individuals.",
-        "liveLink": "#",
+        "liveLink": "https://www.orafitness.ai/",
         "githubLink": "https://github.com/nikoparas1"
       },
       {
