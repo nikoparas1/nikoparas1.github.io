@@ -32,7 +32,7 @@
       },
       {
         "text": "Download Resume/CV",
-        "link": "./assets/Nickolas_Paraskevopoulos_Resume.pdf",
+        "link": "./assets/resume.pdf",
         "newTab": true
       },
       {
@@ -64,7 +64,7 @@
   "about": {
     "profileImage": "./assets/headshot.jpg",
     "title": "About Me",
-    "description": "Graduate student at Virginia Tech pursuing a Master's of Engineering in Computer Science, specializing in Data Analytics & Artificial Intelligence. With experience as a Mobile Software Engineer, I’ve contributed to real-world projects and strengthened my technical skills. I have strong foundations in data structures, algorithms, object-oriented programming, and database management systems, and am eager to continue innovating in the tech industry."
+    "description": "Graduate student at Virginia Tech pursuing a Master's of Engineering in Computer Science, specializing in Data Analytics & Artificial Intelligence. With experience as a Software Engineer, I’ve contributed to real-world projects and strengthened my technical skills along the way. I have strong foundations in data structures, algorithms, object-oriented programming, and database management systems, and am eager to continue innovating in the tech industry."
   },
   "resume": {
     "resumeHeader": "Resume",
@@ -75,36 +75,55 @@
       { "name": "Skills", "className": "skills-btn" },
       { "name": "Info", "className": "info-btn" }
     ],
+    "companyLogos": {
+      "cbp": "./assets/logos/cbp_logo.png",
+      "saic": "./assets/logos/saic_logo.png",
+      "pangiam": "./assets/logos/pangiam_logo.webp",
+      "ascendra": "./assets/logos/ascendra_logo.png",
+      "vt": "./assets/logos/vt_logo.jpg"
+    },
     "experience": [
       {
+        "date": "May 2025 - Present",
+        "position": "Mobile Software Engineer",
+        "company": "U.S. Customs & Border Protection (CBP)",
+        "logo": "cbp",
+        "description": "Build Expo-native iOS modules for on-device face and license plate recognition. Expo Faces runs a real-time pipeline with YOLO-face detection, 3D facial landmark pose estimation, and FaceNet embeddings, then groups detections via cosine similarity and ranks frames by pose and blur to return the best image. Expo License Plate Camera uses a two-stage YOLO vehicle/plate detector and a Vision Transformer OCR model, applying Levenshtein-based clustering, frequency tracking, and blur scoring to stream the most reliable plate read and its best image back to client apps."
+      },
+      {
         "date": "June 2024 - August 2025",
-        "position": "Mobile Application Developer",
+        "position": "Mobile Software Engineer",
         "company": "SAIC",
-        "description": "Developing mobile applications for enterprise use."
+        "logo": "saic",
+        "description": "Shipped Ora Nutrition, a cross-platform React Native + Expo mobile application for logging meals and tracking daily nutrition. Integrated an AI chatbot via FastAPI, LangChain, and the OpenAI API, deploying the backend with Docker on Google Cloud Run. Implemented barcode scanning, saved meals, health data integrations, and Supabase-based authentication and storage, along with push notifications and other engagement features."
       },
       {
         "date": "May 2023 - August 2023",
         "position": "Software Engineering Intern",
         "company": "Pangiam Labs",
-        "description": "Worked on various software engineering projects."
+        "logo": "pangiam",
+        "description": "Built a native Android mobile application to streamline U.S.–Canadian border crossings for sports teams by authenticating passports and travel documents. Integrated ML Kit Text Recognition for MRZ scanning, JMRTD for NFC/RFID chip reading, and Pangiam’s Trueface SDK for one-to-one facial matching, backed by an on-device SQLite database managed via the Android Room library."
       },
       {
         "date": "June 2020 - August 2020",
         "position": "Software Engineering Intern",
         "company": "Ascendra inc.",
-        "description": "Contributed to software development tasks."
+        "logo": "ascendra",
+        "description": "Built an NFL pick’em-style Java application used by employees to manage weekly game pools and team winner selections. Designed the ERD and PostgreSQL database, then implemented a Java application layer to read from the database, calculate scores, determine weekly winners, and generate results reports for the pool."
       }
     ],
     "education": [
       {
         "degree": "Bachelor's of Science in Computer Science",
         "institution": "Virginia Tech",
-        "date": "August 2021 - May 2025"
+        "date": "August 2021 - May 2025",
+        "logo": "vt"
       },
       {
         "degree": "Master's of Engineering in Computer Science",
         "institution": "Virginia Tech",
-        "date": "August 2025 - May 2026"
+        "date": "August 2025 - December 2025",
+        "logo": "vt"
       }
     ],
     "skills": {
@@ -160,6 +179,16 @@
             "name": "XML",
             "logo": "./assets/logos/xml_logo.svg",
             "url": "https://www.w3.org/XML/"
+          },
+          {
+            "name": "Swift",
+            "logo": "./assets/logos/swift_logo.png",
+            "url": "https://www.swift.org/"
+          },
+          {
+            "name": "Dart",
+            "logo": "./assets/logos/dart_logo.png",
+            "url": "https://dart.dev/"
           }
         ],
         "Frameworks": [
@@ -197,6 +226,21 @@
             "name": "Jetpack Compose",
             "logo": "./assets/logos/jetpack_logo.png",
             "url": "https://developer.android.com/jetpack/compose"
+          },
+          {
+            "name": "Spring Boot",
+            "logo": "./assets/logos/springboot_logo.svg",
+            "url": "https://spring.io/projects/spring-boot"
+          },
+          {
+            "name": "Flutter",
+            "logo": "./assets/logos/flutter_logo.png",
+            "url": "https://flutter.dev/"
+          },
+          {
+            "name": "LangChain",
+            "logo": "./assets/logos/langchain_logo.png",
+            "url": "https://www.langchain.com/"
           }
         ],
         "Technologies": [
@@ -224,6 +268,36 @@
             "name": "SQLite",
             "logo": "./assets/logos/sqlite_logo.svg",
             "url": "https://www.sqlite.org/"
+          },
+          {
+            "name": "MongoDB",
+            "logo": "./assets/logos/mongodb_logo.svg",
+            "url": "https://www.mongodb.com/"
+          },
+          {
+            "name": "Firebase",
+            "logo": "./assets/logos/firebase_logo.svg",
+            "url": "https://firebase.google.com/docs"
+          },
+          {
+            "name": "NumPy",
+            "logo": "./assets/logos/numpy_logo.svg",
+            "url": "https://numpy.org/"
+          },
+          {
+            "name": "Pandas",
+            "logo": "./assets/logos/pandas_logo.svg",
+            "url": "https://pandas.pydata.org/"
+          },
+          {
+            "name": "Matplotlib",
+            "logo": "./assets/logos/matplotlib_logo.svg",
+            "url": "https://matplotlib.org/"
+          },
+          {
+            "name": "scikit-learn",
+            "logo": "./assets/logos/sklearn_logo.svg",
+            "url": "https://scikit-learn.org/"
           },
           {
             "name": "Git",
@@ -267,7 +341,6 @@
   },
   "projects": {
     "title": "Technical Projects",
-    "description": "See how I apply my skills through innovative personal projects, pushing the boundaries of technology and problem-solving.",
     "categories": [
       { "name": "All", "filter": "*" },
       { "name": "Frontend", "filter": ".frontend" },
@@ -283,7 +356,15 @@
         "imageDark": "./assets/projects/ora_nutrition(dark).png",
         "imageLight": "./assets/projects/ora_nutrition(light).png",
         "description": "Mobile application featuring an AI-powered chatbot that processes user input to analyze and log meals, accurately calculating macronutrients and caloric content. Leverages natural language processing (NLP) to interpret food descriptions, retrieves nutritional data, aggregates daily totals, and provides tailored meal recommendations and fitness advice based on user goals.",
-        "liveLink": "https://apps.apple.com/us/app/ora-nutrition/id6504763534",
+        "techStack": [
+          "NextJS",
+          "FastAPI",
+          "LangChain",
+          "Supabase",
+          "Docker",
+          "Google Cloud"
+        ],
+        "liveLink": "https://www.orafitness.ai/",
         "githubLink": "https://github.com/nikoparas1"
       },
       {
@@ -293,7 +374,8 @@
         "imageDark": "./assets/projects/vt_nutrition(dark).png",
         "imageLight": "./assets/projects/vt_nutrition(light).png",
         "description": "The Virginia Tech Nutrition Tracker is a robust full-stack web application designed to help students and administrators manage and analyze dining hall information effectively. This application provides dynamic dining hall, restaurant, and food item data through a seamless integration of React on the frontend and Django as the backend service.",
-        "liveLink": "#",
+        "techStack": ["React", "Django", "PostgreSQL", "Docker"],
+        "liveLink": "",
         "githubLink": "https://github.com/nikoparas1"
       },
       {
@@ -303,27 +385,48 @@
         "imageDark": "./assets/projects/fake_news(dark).png",
         "imageLight": "./assets/projects/fake_news(light).png",
         "description": "The Fake News Classification System is a machine learning-based project designed to identify misinformation in news articles using advanced Natural Language Processing (NLP) techniques and state-of-the-art deep learning models. The project integrates a scalable data pipeline, effective preprocessing methods, and a real-time prediction architecture.",
-        "liveLink": "#",
+        "techStack": ["React", "Flask", "scikit-learn"],
+        "liveLink": "",
         "githubLink": "https://github.com/nikoparas1"
       },
       {
         "order": 4,
-        "title": "Ora Nutrition Web Application",
-        "category": "frontend",
-        "imageDark": "./assets/projects/ora_web(dark).png",
-        "imageLight": "./assets/projects/ora_web(light).png",
-        "description": "The Ora Nutrition Web Application is a modern and responsive Next.js-powered platform designed to promote and highlight the key features of the Ora Nutrition mobile app. This web application serves as the central hub for users to learn about the mobile app’s capabilities, its practical uses, and the benefits it brings to health-conscious individuals.",
-        "liveLink": "https://www.orafitness.ai/",
+        "title": "Direct Drive Now",
+        "category": "fullstack",
+        "imageDark": "./assets/projects/ddnow(dark).png",
+        "imageLight": "./assets/projects/ddnow(light).png",
+        "description": "Cross-platform Flutter mobile app with a Flask REST API and Socket.io WebSockets for real-time ride sharing, driver queues, and status updates, featuring SMS OTP auth via Twilio Verify, JWT-based organization RBAC, and proximity-aware ride matching with capacity gating and ride reassignment.",
+        "techStack": ["Flutter", "Flask", "PostgreSQL", "Docker"],
+        "liveLink": "https://www.directdrivenow.com/",
         "githubLink": "https://github.com/nikoparas1"
       },
       {
         "order": 5,
-        "title": "Music Database Management System",
-        "category": "backend",
-        "imageDark": "./assets/projects/music_dbms_project(dark).png",
-        "imageLight": "./assets/projects/music_dbms_project(light).png",
-        "description": "The Music Database Management System is a Java-based application designed to efficiently manage and analyze song and artist metadata. Leveraging advanced data structures and algorithms, this system enables streamlined organization, retrieval, and analysis of music-related data.",
-        "liveLink": "#",
+        "title": "MathQGen",
+        "category": "fullstack",
+        "imageDark": "./assets/projects/mathqgen.png",
+        "imageLight": "./assets/projects/mathqgen.png",
+        "description": "MathQGen is a full-stack web application that enables educators to generate reusable, grade-specific math problems from text or images using a custom LangChain + FastAPI LLM pipeline. It integrates OCR.space with a Google Cloud Vision fallback, secure image handling via Firebase Storage signed URLs, a template-based problem set generator with tag/keyword filters and quantity controls, client-side PDF rendering for printable exports, and an in-app configuration panel for switching LLM providers and customizing system prompts.",
+        "techStack": ["NextJS", "FastAPI", "LangChain", "Firebase", "Vercel"],
+        "liveLink": "https://mathqgen.vercel.app/",
+        "githubLink": "https://github.com/nikoparas1"
+      },
+      {
+        "order": 6,
+        "title": "Matrix",
+        "category": "fullstack",
+        "imageDark": "./assets/projects/matrix.png",
+        "imageLight": "./assets/projects/matrix.png",
+        "description": "Matrix is an AI-powered coding practice platform that combines a Next.js front-end, Supabase-backed auth and persistence, and a Django + LangChain/LangGraph backend to deliver LeetCode-style problems with an integrated code editor, auto-grading test runner, an LLM-driven hint/explanation agent, and real-time data-structure animations generated on-demand via a separate animation service.",
+        "techStack": [
+          "NextJS",
+          "Django",
+          "LangChain",
+          "Supabase",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "liveLink": "https://matrix-dashboard-one.vercel.app/",
         "githubLink": "https://github.com/nikoparas1"
       }
     ]
