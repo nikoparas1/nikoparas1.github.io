@@ -117,6 +117,29 @@
       </div>
     </section>
 
+    <!-- PROJECT INFO MODAL -->
+    <div id="projectModal" class="project-modal">
+      <div class="project-modal-overlay" id="projectModalOverlay"></div>
+      <div class="project-modal-content">
+        <button
+          class="project-modal-close"
+          id="projectModalClose"
+          type="button"
+        >
+          &times;
+        </button>
+        <h3 id="projectModalTitle"></h3>
+        <p id="projectModalDescription"></p>
+
+        <div id="projectModalTechSection" class="project-modal-tech-section">
+          <h4>Tech Stack</h4>
+          <div id="projectModalTechStack" class="project-modal-techstack"></div>
+        </div>
+
+        <ul id="projectModalDetails"></ul>
+      </div>
+    </div>
+
     <script src="./mix/dist/mixitup.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

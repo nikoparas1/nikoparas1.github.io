@@ -9,6 +9,18 @@ fetch("./config.json")
     const projectsData = data.projects;
     const contactData = data.contact;
 
+    const skillItems = resumeData.skills.items;
+    const skillLogoMap = {};
+
+    Object.keys(skillItems).forEach((category) => {
+      skillItems[category].forEach((skill) => {
+        skillLogoMap[skill.name] = {
+          logo: skill.logo,
+          url: skill.url,
+        };
+      });
+    });
+
     // ================== TOP NAV BAR ==================
     const brandLink = document.getElementById("brandLink");
     brandLink.href = navData.topNav.brandLink;
@@ -232,41 +244,100 @@ fetch("./config.json")
 
     // Set Resume Content for Experience
     const setExperienceContent = (button) => {
+      const logos = resumeData.companyLogos || {};
+      const EXPERIENCE_DESCRIPTION_LIMIT = 75;
+
       const experienceContent = `
     <h4>Experience</h4>
     <ul>
       ${resumeData.experience
-        .map(
-          (item) => `
-        <li>
-          <h6>${item.date}</h6>
-          <h5><span>${item.company} |</span> ${item.position}</h5>
-          <p>${item.description}</p>
-        </li>
-      `
-        )
+        .map((item) => {
+          const logoSrc = logos[item.logo] || "";
+          const logoImg = logoSrc
+            ? `<div class="experience-logo-wrapper">
+                 <img class="experience-logo" src="${logoSrc}" alt="${item.company} logo" />
+               </div>`
+            : "";
+          return `
+            <li>
+              <div class="experience-header">
+              ${logoImg}
+              <div class="experience-title">
+                  <h6>${item.date}</h6>
+                  <h5><span>${item.company} |</span> ${item.position}</h5>
+                </div>
+              </div>
+              <p class="experience-description">${item.description}</p>
+            </li>
+          `;
+        })
         .join("")}
     </ul>`;
       setResumeContent(experienceContent, "experience");
       updateActiveButton(button);
+
+      const descriptionElems = document.querySelectorAll(
+        ".resume-right.experience .experience-description"
+      );
+
+      descriptionElems.forEach((descriptionElem) => {
+        const fullText = descriptionElem.textContent.trim();
+        if (fullText.length <= EXPERIENCE_DESCRIPTION_LIMIT) return;
+
+        const truncatedText =
+          fullText.slice(0, EXPERIENCE_DESCRIPTION_LIMIT) + "...";
+        descriptionElem.textContent = truncatedText;
+
+        const toggleButton = document.createElement("button");
+        toggleButton.textContent = "Expand";
+        toggleButton.classList.add("btn", "toggle-description-btn");
+
+        const parentLi = descriptionElem.parentElement;
+        parentLi.insertBefore(toggleButton, descriptionElem.nextSibling);
+
+        let isExpanded = false;
+        toggleButton.addEventListener("click", () => {
+          if (isExpanded) {
+            descriptionElem.textContent = truncatedText;
+            toggleButton.textContent = "Expand";
+          } else {
+            descriptionElem.textContent = fullText;
+            toggleButton.textContent = "Collapse";
+          }
+          isExpanded = !isExpanded;
+        });
+      });
     };
 
     // Set Resume Content for Education
     const setEducationContent = (button) => {
+      const logos = resumeData.companyLogos || {};
+
       const educationContent = `
-    <h4>Education</h4>
-    <ul>
-      ${resumeData.education
-        .map(
-          (item) => `
-        <li>
-          <h5><span>${item.degree},</span> ${item.institution}</h5>
-          <p>${item.date}</p>
-        </li>
-      `
-        )
-        .join("")}
-    </ul>`;
+        <h4>Education</h4>
+        <ul>
+          ${resumeData.education
+            .map((item) => {
+              const logoSrc = logos[item.logo] || "";
+              const logoImg = logoSrc
+                ? `<div class="experience-logo-wrapper">
+                    <img class="experience-logo" src="${logoSrc}" alt="${item.institution} logo" />
+                  </div>`
+                : "";
+              return `
+                <li>
+                  <div class="experience-header">
+                    ${logoImg}
+                    <div class="experience-title">
+                      <h5><span>${item.degree},</span> ${item.institution}</h5>
+                      <p>${item.date}</p>
+                    </div>
+                  </div>
+                </li>
+              `;
+            })
+            .join("")}
+        </ul>`;
       setResumeContent(educationContent, "education");
       updateActiveButton(button);
     };
@@ -274,7 +345,7 @@ fetch("./config.json")
     // Set Resume Content for Skills with Logos
     const setSkillsContent = (button) => {
       const skillCategories = ["All", ...resumeData.skills.categories]; // Add "All" category
-      const skillItems = resumeData.skills.items;
+
       const skillsContent = `
     <h4>Skills</h4>
     <menu class="skill-categories">
@@ -379,7 +450,6 @@ fetch("./config.json")
     // ================== PROJECTS SECTION ==================
 
     isDarkTheme = document.body.classList.contains("dark-theme-variables");
-    const DESCRIPTION_LIMIT = 50;
 
     // Set project section title and description
     const projectsTitle = document.querySelector("#projects h1");
@@ -418,7 +488,6 @@ fetch("./config.json")
           />
         </div>
         <h5>${project.title}</h5>
-        <p class="project-description">${project.description}</p>
         <div class="project-cta">
           <a href="${project.liveLink}" class="btn primary" target="_blank">
             <i class="uil uil-link-h"></i>
@@ -426,41 +495,102 @@ fetch("./config.json")
           <a href="${project.githubLink}" class="btn" target="_blank">
             <i class="uil uil-github"></i>
           </a>
+          <button type="button" class="btn project-info-btn">
+            <i class="uil uil-info-circle"></i>
+          </button>
         </div>
       `;
 
-      // Truncate text if it is over the limit
-      const descriptionElem = projectElement.querySelector(
-        ".project-description"
-      );
-      const fullText = project.description;
+      const infoButton = projectElement.querySelector(".project-info-btn");
+      infoButton.addEventListener("click", () => {
+        openProjectModal(project);
+      });
 
-      if (fullText.length > DESCRIPTION_LIMIT) {
-        const truncatedText = fullText.slice(0, DESCRIPTION_LIMIT) + "...";
-        descriptionElem.textContent = truncatedText;
+      projectsContainer.appendChild(projectElement);
+    });
 
-        // Create toggle button
-        const toggleButton = document.createElement("button");
-        toggleButton.textContent = "Expand";
-        toggleButton.classList.add("btn", "toggle-description-btn");
-        const projectCTA = projectElement.querySelector(".project-cta");
-        projectElement.insertBefore(toggleButton, projectCTA);
+    // ================== Project Info Modal SECTION ==================
+    const projectModal = document.getElementById("projectModal");
+    const projectModalOverlay = document.getElementById("projectModalOverlay");
+    const projectModalClose = document.getElementById("projectModalClose");
+    const projectModalTitle = document.getElementById("projectModalTitle");
+    const projectModalDescription = document.getElementById(
+      "projectModalDescription"
+    );
+    const projectModalDetails = document.getElementById("projectModalDetails");
+    const projectModalTechSection = document.getElementById(
+      "projectModalTechSection"
+    );
+    const projectModalTechStack = document.getElementById(
+      "projectModalTechStack"
+    );
 
-        // Add event listener to toggle between truncated and full text
-        let isExpanded = false;
-        toggleButton.addEventListener("click", () => {
-          if (isExpanded) {
-            descriptionElem.textContent = truncatedText;
-            toggleButton.textContent = "Expand";
+    const openProjectModal = (project) => {
+      projectModalTitle.textContent = project.title;
+      projectModalDescription.textContent = project.description;
+
+      projectModalDetails.innerHTML = "";
+      const details = Array.isArray(project.details) ? project.details : [];
+      details.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        projectModalDetails.appendChild(li);
+      });
+
+      projectModalTechStack.innerHTML = "";
+      const stackNames = Array.isArray(project.techStack)
+        ? project.techStack
+        : [];
+
+      if (stackNames.length === 0) {
+        projectModalTechSection.style.display = "none";
+      } else {
+        projectModalTechSection.style.display = "block";
+
+        stackNames.forEach((name) => {
+          const skill = skillLogoMap[name];
+          if (!skill) return; // silently skip unknown names
+
+          const item = document.createElement("div");
+          item.classList.add("project-modal-tech-item");
+
+          item.innerHTML = `
+        <div class="project-modal-tech-logo">
+          <img src="${skill.logo}" alt="${name} logo" />
+        </div>
+        <span>${name}</span>
+      `;
+
+          if (skill.url) {
+            const link = document.createElement("a");
+            link.href = skill.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.classList.add("project-modal-tech-link");
+            link.appendChild(item);
+            projectModalTechStack.appendChild(link);
           } else {
-            descriptionElem.textContent = fullText;
-            toggleButton.textContent = "Collapse";
+            projectModalTechStack.appendChild(item);
           }
-          isExpanded = !isExpanded;
         });
       }
 
-      projectsContainer.appendChild(projectElement);
+      projectModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeProjectModal = () => {
+      projectModal.classList.remove("show");
+      document.body.style.overflow = "";
+    };
+
+    projectModalOverlay.addEventListener("click", closeProjectModal);
+    projectModalClose.addEventListener("click", closeProjectModal);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && projectModal.classList.contains("show")) {
+        closeProjectModal();
+      }
     });
 
     // Initialize MixItUp filtering
