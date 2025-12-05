@@ -75,7 +75,6 @@ body {
 .container {
   width: var(--container-w-lg);
   margin-inline: auto;
-  /* background-color: #0073ff; */
 }
 
 img {
@@ -209,6 +208,17 @@ nav {
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.brandLink {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.brandLogo {
+  height: 100%;
+  width: auto;
 }
 
 /* Floating Nav Bar */

@@ -2,7 +2,8 @@
   "nav": {
     "topNav": {
       "brandName": "NICKOLAS PARASKEVOPOULOS",
-      "brandLink": "index.html",
+      "brandLogo": "./assets/logos/brand_link.svg",
+      "brandLink": "",
       "themeToggle": {
         "iconLight": "uil uil-moon",
         "iconDark": "uil uil-sun"
@@ -426,7 +427,7 @@
           "PostgreSQL",
           "Docker"
         ],
-        "liveLink": "https://matrix-dashboard-one.vercel.app/",
+        "liveLink": "https://the-matrix-ai.vercel.app/",
         "githubLink": "https://github.com/nikoparas1"
       }
     ]

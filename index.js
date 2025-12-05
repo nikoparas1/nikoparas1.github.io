@@ -23,8 +23,13 @@ fetch("./config.json")
 
     // ================== TOP NAV BAR ==================
     const brandLink = document.getElementById("brandLink");
+    if (navData.topNav.brandLogo) {
+      const brandLogoImage = document.getElementById("brandLogo");
+      brandLogoImage.src = navData.topNav.brandLogo;
+    } else {
+      brandLink.textContent = navData.topNav.brandName;
+    }
     brandLink.href = navData.topNav.brandLink;
-    brandLink.textContent = navData.topNav.brandName;
 
     const themeToggleButton = document.getElementById("themeToggleButton");
     const themeIcon = document.getElementById("themeIcon");
